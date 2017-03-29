@@ -3,6 +3,7 @@ package view;
 import java.io.File;
 import java.io.IOException;
 
+import controller.ChangeImage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -28,8 +29,7 @@ public class InterfaceView {
 	private BorderPane rootLayout;
 	private Stage primaryStage;
 	
-	private File workingImage;
-	private File currentImage;
+	private String ImagePath;
 	
 	public InterfaceView(Stage primary){
 		primaryStage=primary;
@@ -45,8 +45,8 @@ public class InterfaceView {
 		rootLayout.setPrefSize(600,500);
 	    rootLayout.setTop(createMenuBar());
 	    
-	    currentImage=new File("src/view/image_2.jpeg");
-		workingImage=new File("src/view/image_2_grey.jpeg");
+	    ImagePath="src/view/image_2.jpeg";
+		//workingImage=new File("src/view/image_2_grey.jpeg");
 	    //toolBar.setOrientation(null);
 	    rootLayout.setBottom(createToolbar());
 	    //String image_links = new File("Pixelmatic/src/image_1.gif").toURI().toString();
@@ -59,31 +59,21 @@ public class InterfaceView {
 	    primaryStage.setScene(scene);
 	    
 	}
-	public File getCurrentImage(){
-		return currentImage;
-	}
-	public File getWorkingImage(){
-		return workingImage;
-	}
+	
+	// We create a toolbar for our app
 	public ToolBar createToolbar(){
 		Button but_img1 = new Button("image1");
 	    but_img1.setPrefSize(100, 20);
 	    //String image_links1 = new File("Pixelmatic/src/image_1.gif").toURI().toString(); 
-        ImageView image = new ImageView(currentImage.toURI().toString());
+        ImageView image = new ImageView(new File(ImagePath).toURI().toString());
 	    but_img1.setOnAction(actionEvent -> showImage(image));
 	    
 	    Button but_img2 = new Button("image2");
 	    but_img2.setPrefSize(100, 20);
 	    //String image_links2 = new File("Pixelmatic/src/pixelmatic/image_2.jpeg").toURI().toString(); 
 	    
-	    // Don't respect MVC change it !!!!
-	    try {
-			ImageEffects.blackAndWhite(this);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        ImageView  image2= new ImageView(workingImage.toURI().toString());
+	    
+        ImageView  image2= new ImageView(new File(ChangeImage.applyBlackAndWhite(ImagePath)).toURI().toString());
         but_img2.setOnAction(actionEvent -> showImage(image2));
         
 		ToolBar toolBar = new ToolBar(
