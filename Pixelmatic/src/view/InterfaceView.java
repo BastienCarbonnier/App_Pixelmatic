@@ -45,8 +45,8 @@ public class InterfaceView {
 		rootLayout.setPrefSize(600,500);
 	    rootLayout.setTop(createMenuBar());
 	    
-	    currentImage=new File("Pixelmatic/src/view/image_2.jpeg");
-		workingImage=new File("Pixelmatic/src/view/image_2_grey.jpeg");
+	    currentImage=new File("src/view/image_2.jpeg");
+		workingImage=new File("src/view/image_2_grey.jpeg");
 	    //toolBar.setOrientation(null);
 	    rootLayout.setBottom(createToolbar());
 	    //String image_links = new File("Pixelmatic/src/image_1.gif").toURI().toString();
