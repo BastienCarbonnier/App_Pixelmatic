@@ -25,7 +25,7 @@ public class ImageEffects {
         String newPath=ModifyPath.addToPath(imagePath,"_bw");
         //Enregistrer l'image au format PNG
         ImageIO.write(imagedst, "PNG", new File(newPath));
-		return newPath;
+		return newPath; // retourne le nouveau chemin
 		//Image image = SwingFXUtils.toFXImage(capture, null);
 	}
 }
