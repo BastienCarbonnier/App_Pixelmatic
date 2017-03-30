@@ -34,6 +34,7 @@ public class InterfaceView {
 	public InterfaceView(Stage primary){
 		primaryStage=primary;
 	    primaryStage.setTitle("Pixelmatic");
+	    
 	    createRootLayout();
 	}
 	
