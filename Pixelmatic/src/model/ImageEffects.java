@@ -28,5 +28,6 @@ public class ImageEffects {
 		return newPath; // retourne le nouveau chemin
 		// Ah Bon ?
 		//Image image = SwingFXUtils.toFXImage(capture, null);
+		//oui oui je t'assure
 	}
 }
