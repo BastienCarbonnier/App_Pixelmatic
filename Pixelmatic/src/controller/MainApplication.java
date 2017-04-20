@@ -34,16 +34,7 @@ public class MainApplication extends Application {
 	public void start(Stage primaryStage) {
 		
 	    InterfaceView app=new InterfaceView(primaryStage);
-	    
-	    
-			/*try {
-				ImageEffects.blackAndWhite(app);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
-	    
-	    
+	    	    
 	    app.show();
 	    
 	}

@@ -117,8 +117,9 @@ public class InterfaceView {
 	    Menu editMenu = new Menu("Edition");
 	    Menu helpMenu = new Menu("Aide");
 	    MenuItem exitMenuItem = new MenuItem("Exit");
+	    MenuItem saveMenuItem = new MenuItem("Save");
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
-	    
+	    fileMenu.getItems().addAll(saveMenuItem);
 	    exitMenuItem.setOnAction(actionEvent -> Platform.exit());
 	    
 	    menuBar.getMenus().addAll(pixelmaticMenu,fileMenu,editMenu,helpMenu);

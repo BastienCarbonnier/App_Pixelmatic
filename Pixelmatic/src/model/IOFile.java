@@ -1,5 +1,6 @@
 package model;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.*;
 
 import javafx.scene.image.Image;
@@ -19,7 +20,7 @@ public class IOFile {
 
 
 	public static String Save(String ImagePath){
-		char rep;
+		String rep;
 		File original=new File(ImagePath);
 		String image_link;
 		Scanner sc = new Scanner(System.in); 
