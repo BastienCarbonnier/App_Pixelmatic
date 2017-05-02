@@ -1,7 +1,8 @@
 package model;
-import java.io.File;
+import java.io.*;
 import java.io.FileInputStream;
 import java.util.*;
+import java.nio.file.*;
 
 import javafx.scene.image.Image;
 
@@ -19,68 +20,33 @@ public class IOFile {
 
 
 
-	public static String Save(String ImagePath){
-		String rep;
-		File original=new File(ImagePath);
+	public static String Save(String ImagePath) throws IOException{
+		int rep;
 		String image_link;
-		Scanner sc = new Scanner(System.in); 
-		System.out.println("Enregistrer l'image ? (y/N");
-		rep=sc.nextLine();
-		if(rep == 'y' || rep=='Y') {
+		Scanner entier = new Scanner(System.in); 
+		System.out.println("Enregistrer l'image ? (0/1)");
+		rep=entier.nextInt();
+		Scanner chemin=new Scanner(System.in);
+		if(rep == 1) {
 			System.out.println("Veuillez saisir l'emplacement de l'image :"); 
-			image_link = sc.nextLine(); //saisie de la source
-			copy(original, image_link);
+			image_link = chemin.nextLine(); //saisie de la source
+			askcopy(ImagePath, image_link);
+			
 			return image_link;
 		}
-		
 		else {
-			File modified=new File(ImagePath).delete();
+			new File(ImagePath).delete();
 			return ImagePath;
 		}
 	}
 	
-    private static boolean copy(String start, String dest){
+    private static void askcopy(String start, String dest) throws IOException{
 
-        boolean result=false; 
-        File original=new File(start); //création des variables fichier
-        File modified=new File(dest);
-        result=hardcopy(original, modified);
-		return result;
+        Path source= Paths.get(start); //création des variables fichier
+        Path destination=Paths.get(dest);
+        Files.copy(source, destination);
     }
 
-    private static boolean hardcopy(File original, File modified) {
-    	boolean result=false;
-        FileInputStream fileOriginal=null;
-        FileOutputStream fileModified=null;
-        try{
-            fileOriginal=new FileInputStream(original);
-            fileModified=new FileOutputStream(modified));
-            byte buffer[]=new byte[512*1024];
-            while((int reading=filesource.read(buffer))!=-1){
-                fileModified.write(buffer,0,reading);
-            }
-        result=true;
-        }
-        catch(FileNotFoundException nf){
-            nf.printStackTrace();
-        }
-        catch(IOException io) {
-            io.printStackTrace();
-        }
-        finally {
-            try {
-                fileOriginal.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            try{
-                fileModified.close();
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-        } 
-        return result;
-    }
 }
 
 
