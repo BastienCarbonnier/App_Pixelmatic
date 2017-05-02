@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.IOFile;
 import model.ImageEffects;
 
 
@@ -121,6 +122,14 @@ public class InterfaceView {
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
 	    fileMenu.getItems().addAll(saveMenuItem);
 	    exitMenuItem.setOnAction(actionEvent -> Platform.exit());
+	    saveMenuItem.setOnAction(actionEvent -> {
+			try {
+				Save();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	    
 	    menuBar.getMenus().addAll(pixelmaticMenu,fileMenu,editMenu,helpMenu);
 	    return menuBar;
@@ -148,7 +157,9 @@ public class InterfaceView {
     public void showImage(ImageView img){
     	rootLayout.setCenter(img);
     }
-    
+    public void Save() throws IOException{
+    	IOFile.Save(ImagePath);
+    }
     
     
 	
