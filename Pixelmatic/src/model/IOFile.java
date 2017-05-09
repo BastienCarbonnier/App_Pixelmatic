@@ -1,26 +1,33 @@
 package model;
 import java.io.*;
-import java.io.FileInputStream;
 import java.util.*;
+
+import controller.WorkArea;
+
 import java.nio.file.*;
 
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.stage.DirectoryChooser;
 
 public class IOFile {
 	
 	
-	public static String Select(){
+	public static String selectImage(File fichier){
 		
-		String image_link;
-		Scanner sc = new Scanner(System.in); 
-        System.out.println("Veuillez saisir la source de l'image :"); 
-        image_link = sc.nextLine(); //saisie de la source
+		String image_link="";
+		if (fichier != null) {
+			//copy de l'image dans le dossier du projet 
+			
+            WorkArea.setCurrentImagePath(fichier.getPath());
+        }
+		
 		return image_link;
 	}
 
 
-
-	public static String Save(String ImagePath) throws IOException{
+	
+	public static String save(String ImagePath) throws IOException{
 		int rep;
 		String image_link;
 		Scanner entier = new Scanner(System.in); 
@@ -40,10 +47,11 @@ public class IOFile {
 		}
 	}
 	
-    private static void askcopy(String start, String dest) throws IOException{
+    public static void askcopy(String start, String dest) throws IOException{
 
         Path source= Paths.get(start); //création des variables fichier
         Path destination=Paths.get(dest);
+        
         Files.copy(source, destination);
     }
 

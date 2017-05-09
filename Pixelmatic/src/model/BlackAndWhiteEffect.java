@@ -7,14 +7,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.image.Image;
+import controller.WorkArea;
+import javafx.scene.image.ImageView;
 import view.InterfaceView;
 
-public class ImageEffects {
-	
-	public static String blackAndWhite(String imagePath) throws IOException{
-		
+public class BlackAndWhiteEffect{
+
+	public static void applyEffect(String imagePath) throws IOException{
 		
 		BufferedImage imagesrc = ImageIO.read(new File(imagePath));
         BufferedImage imagedst = new BufferedImage(imagesrc.getWidth(),imagesrc.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
@@ -22,11 +21,7 @@ public class ImageEffects {
         g.drawImage(imagesrc, 0, 0, null);
         g.dispose();
         
-        String newPath=ModifyPath.addToPath(imagePath,"_bw");
-        //Enregistrer l'image au format PNG
-        ImageIO.write(imagedst, "PNG", new File(newPath));
-		return newPath; // retourne le nouveau chemin
-		// essai commit bastien
-		//Image image = SwingFXUtils.toFXImage(capture, null);
+        ImageIO.write(imagedst, "PNG", new File(imagePath));
+		
 	}
 }
