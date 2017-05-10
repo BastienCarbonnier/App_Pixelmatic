@@ -6,7 +6,7 @@ import view.InterfaceView;
 
 public class MainApplication extends Application {
 		
-	private final static String base_image="src/view/image_2.jpeg";
+	private final static String base_image="src/view/image_2.jpg";
 	
 	public void start(Stage primaryStage) {
 		
