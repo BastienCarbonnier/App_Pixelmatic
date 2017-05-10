@@ -7,8 +7,8 @@ public class WorkArea {
 	private static String currentImagePath;
 	private static String baseImagePath;
 	
-	public WorkArea(String image){
-		baseImagePath=image;
+	public WorkArea(){
+		baseImagePath=null;
 		currentImagePath=null;
 	}
 	
@@ -24,11 +24,6 @@ public class WorkArea {
 	public static void setBaseImagePath(String image){
 		baseImagePath=image;
 	}
-	public int getHeightCurrentImage(){
-		return (int) new Image(currentImagePath).getHeight();
-	}
-	public int getWidthCurrentImage(){
-		return (int) new Image(currentImagePath).getWidth();
-	}
+	
 	
 }

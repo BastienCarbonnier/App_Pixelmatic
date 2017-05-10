@@ -20,8 +20,6 @@ public class BlackAndWhiteEffect{
         Graphics g = imagedst.getGraphics();
         g.drawImage(imagesrc, 0, 0, null);
         g.dispose();
-        
         ImageIO.write(imagedst, "PNG", new File(imagePath));
-		
 	}
 }
