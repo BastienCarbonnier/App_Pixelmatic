@@ -11,6 +11,5 @@ public class FlouEffect {
 	public static void applyEffect(String imagePath){
 		ImageView image=new ImageView(imagePath);
 		image.setEffect(new GaussianBlur());
-		
 	}
 }

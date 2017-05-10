@@ -28,6 +28,8 @@ public class ButtonHandling {
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
 	public static void applyEffect2() throws IOException{
+		String currentPath="src/view/image_2.jpg";
+		WorkArea.setCurrentImagePath(currentPath);
 		FlouEffect.applyEffect(new File(WorkArea.getCurrentImagePath()).toURI().toString());
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}

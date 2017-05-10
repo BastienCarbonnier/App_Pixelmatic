@@ -17,9 +17,9 @@ public class IOFile {
 		
 		String image_link="";
 		if (fichier != null) {
-			//copy de l'image dans le dossier du projet 
-			
+			//copy de l'image dans le dossier du projet
             WorkArea.setCurrentImagePath(fichier.getPath());
+            
         }
 		
 		return image_link;

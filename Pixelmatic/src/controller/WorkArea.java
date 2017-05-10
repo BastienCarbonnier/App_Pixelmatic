@@ -9,7 +9,7 @@ public class WorkArea {
 	
 	public WorkArea(String image){
 		baseImagePath=image;
-		
+		currentImagePath=null;
 	}
 	
 	public static String getCurrentImagePath(){

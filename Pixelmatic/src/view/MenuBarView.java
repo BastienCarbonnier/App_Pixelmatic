@@ -30,7 +30,9 @@ public class MenuBarView {
 	        
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
 	    fileMenu.getItems().addAll(openMenuItem);
-	    exitMenuItem.setOnAction(actionEvent -> Platform.exit());
+	    
+	    exitMenuItem.setOnAction(actionEvent -> IOController.exit());
+	    
 	    openMenuItem.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
 	        File file = fileChooser.showOpenDialog(null); 
