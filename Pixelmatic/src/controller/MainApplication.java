@@ -2,7 +2,6 @@ package controller;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import model.ModifyPath;
 import view.InterfaceView;
 
 public class MainApplication extends Application {
@@ -11,8 +10,9 @@ public class MainApplication extends Application {
 	
 	public void start(Stage primaryStage) {
 		
+		@SuppressWarnings("unused")
 		WorkArea currentArea=new WorkArea();
-	    InterfaceView app=new InterfaceView(primaryStage,currentArea);
+	    InterfaceView app=new InterfaceView(primaryStage);
 	  
 	    app.show();
 	    

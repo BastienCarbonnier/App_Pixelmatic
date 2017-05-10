@@ -1,21 +1,14 @@
 package view;
 
 import java.io.File;
-import java.io.IOException;
-
 import controller.WorkArea;
-import controller.ButtonHandling;
 import controller.IOController;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -28,18 +21,17 @@ import javafx.stage.Stage;
 public class InterfaceView {
 	
 	
-	private Stage primaryStage;
+	private static Stage primaryStage;
 	
-	private WorkArea currentArea;
+	
 	private static BorderPane rootLayout;
 	
-	public InterfaceView(Stage primary,WorkArea area){
+	public InterfaceView(Stage primary){
 		primaryStage=primary;
 	    primaryStage.setTitle("Pixelmatic");
 	    primaryStage.setMinHeight(400);
 	    primaryStage.setMinWidth(400);
-	    //primaryStage.setFullScreen(true);
-	    currentArea=area;
+	    
 	    
 	    createRootLayout();
 	}
@@ -65,9 +57,10 @@ public class InterfaceView {
 	        File file = fileChooser.showOpenDialog(null); 
 	        IOController.openImage(file);
 		});
-	    rootLayout.setCenter(buttonFirstSelectImage);
-	    //showImage(WorkArea.getBaseImagePath());
-	    //showImage("src/view/image_2.jpg");
+	    
+	    //rootLayout.setCenter(buttonFirstSelectImage);
+	    // for test 
+	    WorkArea.setBaseImagePath("src/view/image_test.jpg");
 	    Scene scene = new Scene(rootLayout);
 	    primaryStage.setScene(scene);
 	    
@@ -75,8 +68,18 @@ public class InterfaceView {
     
     public static void showImage(String img){
     	ImageView image=new ImageView(new File(img).toURI().toString());
+    	if (image.getImage().getWidth()>500||image.getImage().getHeight()>500){
+    		image.setPreserveRatio(true);
+    		image.setFitHeight(600);
+    		image.setFitWidth(600);
+    		primaryStage.setMinHeight(600+50);
+    	    primaryStage.setMinWidth(600+50);
+    	}else{
+    		primaryStage.setMinHeight(image.getImage().getHeight()+50);
+    	    primaryStage.setMinWidth(image.getImage().getWidth()+50);
+    	}
     	rootLayout.setCenter(image);
-    	rootLayout.setPrefSize(image.getImage().getWidth()+50,image.getImage().getHeight()+50);
+    	
     	System.out.println(img);
     }
     public static void showErrorMessage(String t){
@@ -110,9 +113,6 @@ public class InterfaceView {
     	errorStage.setScene(errorScene);
     
     	errorStage.showAndWait();
-    	
-    	
-    	//rootLayout.setPrefSize(image.getImage().getWidth()+50,image.getImage().getHeight()+50);
     	
     }
     

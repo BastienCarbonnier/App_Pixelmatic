@@ -1,12 +1,10 @@
 package controller;
 
-import java.io.File;
-import java.io.IOException;
 
-import javafx.scene.effect.GaussianBlur;
-import javafx.scene.image.ImageView;
-import model.BlackAndWhiteEffect;
-import model.FlouEffect;
+import java.io.IOException;
+import model.ColorEffects;
+import model.ContourEffects;
+import model.FlouEffects;
 import model.IOFile;
 import model.ModifyPath;
 import view.InterfaceView;
@@ -14,6 +12,7 @@ import view.InterfaceView;
 public class ButtonHandling {
 	
 	public static void showBaseImage(){
+		
 		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
@@ -21,29 +20,25 @@ public class ButtonHandling {
 		
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
-	public static void applyEffectBlackAndWhite() throws IOException{
+	public static void useBlackAndWhiteEffect() throws IOException{
 		
-		/*String basePath="src/view/image_2.jpg";
-		String currentPath="src/view/image_2_tmp.jpg";
-		
-		WorkArea.setCurrentImagePath(currentPath);
-		WorkArea.setBaseImagePath(basePath);*/
 		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
-		
+		// to hide image
+		//String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
 		IOFile.askcopy(baseImagePath,currentImagePath);
 		
 		WorkArea.setCurrentImagePath(currentImagePath);
 		
-		BlackAndWhiteEffect.applyEffect(currentImagePath);
+		ColorEffects.applyBlackAndWhiteEffect(currentImagePath);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
-	public static void applyEffectGaussian() throws IOException{
+	public static void useGaussianEffect() throws IOException{
 		
 		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
@@ -51,12 +46,102 @@ public class ButtonHandling {
 		}
 		
 		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
 		
 		IOFile.askcopy(baseImagePath,currentImagePath);
 		WorkArea.setCurrentImagePath(currentImagePath);
 		
-		FlouEffect.applyEffect(currentImagePath);
+		FlouEffects.applyGaussianEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	
+	public static void useBlurEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		FlouEffects.applyBlurEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	
+	public static void useSepiaEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ColorEffects.applySepiaEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	
+	public static void useNegativeEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ColorEffects.applyNegativeEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	public static void useAccentuationEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ContourEffects.applyAccentuationEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	
+	public static void useEstampageEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ContourEffects.applyEstampageEffect(currentImagePath);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
