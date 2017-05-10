@@ -12,31 +12,52 @@ import model.ModifyPath;
 import view.InterfaceView;
 
 public class ButtonHandling {
+	
 	public static void showBaseImage(){
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
 	public static void applyEffectBlackAndWhite() throws IOException{
 		
-		String basePath="src/view/image_2.jpg";
+		/*String basePath="src/view/image_2.jpg";
 		String currentPath="src/view/image_2_tmp.jpg";
 		
 		WorkArea.setCurrentImagePath(currentPath);
-		WorkArea.setBaseImagePath(basePath);
-		IOFile.askcopy(WorkArea.getBaseImagePath(),ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
-		//IOFile.askcopy(basePath,currentPath);
-		
-		WorkArea.setCurrentImagePath("src/view/image_2_tmp.jpg");
-		BlackAndWhiteEffect.applyEffect("src/view/image_2_tmp.jpg");
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
-	}
-	public static void applyEffectGaussian() throws IOException{
-		//String currentPath="src/view/image_2.jpg";
-		//WorkArea.setCurrentImagePath(currentPath);
-		if (WorkArea.getCurrentImagePath()==null){
+		WorkArea.setBaseImagePath(basePath);*/
+		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
-		FlouEffect.applyEffect(new File(WorkArea.getCurrentImagePath()).toURI().toString());
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		BlackAndWhiteEffect.applyEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	public static void applyEffectGaussian() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		FlouEffect.applyEffect(currentImagePath);
+		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
 }

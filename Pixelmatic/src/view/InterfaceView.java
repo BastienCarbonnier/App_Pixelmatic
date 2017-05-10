@@ -16,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -81,6 +82,7 @@ public class InterfaceView {
     public static void showErrorMessage(String t){
     	
     	Text text=new Text(t);
+    	text.setFont(Font.getDefault());
     	
     	Stage errorStage=new Stage();
     	//tell stage it is meant to pop-up (Modal)
