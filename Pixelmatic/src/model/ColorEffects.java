@@ -4,13 +4,18 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import javax.imageio.ImageIO;
+
+import view.InterfaceView;
 
 
 public class ColorEffects{
 
 	public static void applyBlackAndWhiteEffect(String imagePath) throws IOException{
-		
+		//System.out.println(InterfaceView.class.getResource(imagePath).getPath());
+		//BufferedImage imagesrc = ImageIO.read(new File(InterfaceView.class.getResource(imagePath).getPath()));
 		BufferedImage imagesrc = ImageIO.read(new File(imagePath));
         BufferedImage imagedst = new BufferedImage(imagesrc.getWidth(),imagesrc.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
         Graphics g = imagedst.getGraphics();

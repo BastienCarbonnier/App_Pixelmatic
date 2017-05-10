@@ -60,7 +60,7 @@ public class InterfaceView {
 	    
 	    //rootLayout.setCenter(buttonFirstSelectImage);
 	    // for test 
-	    WorkArea.setBaseImagePath("src/img/image_test.jpg");
+	    WorkArea.setBaseImagePath("src/view/image_test.jpg");
 	    Scene scene = new Scene(rootLayout);
 	    primaryStage.setScene(scene);
 	    
@@ -68,6 +68,11 @@ public class InterfaceView {
     
     public static void showImage(String img){
     	ImageView image=new ImageView(new File(img).toURI().toString());
+    	//System.out.println(InterfaceView.class.getResource("/image_test.jpg"));
+    	
+    	//bonne version
+    	//ImageView image=new ImageView(new File(InterfaceView.class.getResource(img).getFile()).toURI().toString());
+    	//System.out.println(InterfaceView.class.getResource(img).getFile().toString());
     	if (image.getImage().getWidth()>500||image.getImage().getHeight()>500){
     		image.setPreserveRatio(true);
     		image.setFitHeight(600);

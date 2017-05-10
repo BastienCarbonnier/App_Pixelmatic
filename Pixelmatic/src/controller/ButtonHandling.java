@@ -2,6 +2,8 @@ package controller;
 
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+
 import model.ColorEffects;
 import model.ContourEffects;
 import model.FlouEffects;
@@ -34,7 +36,9 @@ public class ButtonHandling {
 		
 		WorkArea.setCurrentImagePath(currentImagePath);
 		
+		
 		ColorEffects.applyBlackAndWhiteEffect(currentImagePath);
+		
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
