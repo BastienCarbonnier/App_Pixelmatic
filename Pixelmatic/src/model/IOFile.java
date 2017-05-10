@@ -9,7 +9,7 @@ import java.nio.file.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.stage.DirectoryChooser;
-
+import static java.nio.file.StandardCopyOption.*;
 public class IOFile {
 	
 	
@@ -51,8 +51,7 @@ public class IOFile {
 
         Path source= Paths.get(start); //création des variables fichier
         Path destination=Paths.get(dest);
-        
-        Files.copy(source, destination);
+        Files.copy(source, destination,REPLACE_EXISTING);
     }
 
 }

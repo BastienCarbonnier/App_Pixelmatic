@@ -16,8 +16,15 @@ public class ButtonHandling {
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
 	public static void applyEffect1() throws IOException{
-		//IOFile.askcopy(WorkArea.getCurrentImagePath(),ModifyPath.addToPath(WorkArea.getCurrentImagePath(),"tmp"));
-		BlackAndWhiteEffect.applyEffect(WorkArea.getCurrentImagePath());
+		String basePath="src/view/image_2.jpg";
+		String currentPath="src/view/image_2_tmp.jpg";
+		WorkArea.setCurrentImagePath(currentPath);
+		WorkArea.setBaseImagePath(basePath);
+		IOFile.askcopy(WorkArea.getBaseImagePath(),ModifyPath.addToPath(WorkArea.getBaseImagePath(),"tmp"));
+		//IOFile.askcopy(basePath,currentPath);
+		
+		WorkArea.setCurrentImagePath("src/view/image_2_tmp.jpg");
+		BlackAndWhiteEffect.applyEffect("src/view/image_2_tmp.jpg");
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
 	public static void applyEffect2() throws IOException{

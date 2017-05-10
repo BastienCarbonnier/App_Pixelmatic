@@ -9,8 +9,7 @@ public class WorkArea {
 	
 	public WorkArea(String image){
 		baseImagePath=image;
-		// A ENLEVER !! des que la copie est operationnelle
-		currentImagePath=image;
+		
 	}
 	
 	public static String getCurrentImagePath(){
@@ -21,6 +20,9 @@ public class WorkArea {
 	}
 	public static void setCurrentImagePath(String image){
 		currentImagePath=image;
+	}
+	public static void setBaseImagePath(String image){
+		baseImagePath=image;
 	}
 	public int getHeightCurrentImage(){
 		return (int) new Image(currentImagePath).getHeight();
