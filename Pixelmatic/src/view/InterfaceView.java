@@ -60,7 +60,7 @@ public class InterfaceView {
 	    
 	    //rootLayout.setCenter(buttonFirstSelectImage);
 	    // for test 
-	    WorkArea.setBaseImagePath("src/view/image_test.jpg");
+	    WorkArea.setBaseImagePath("src/img/image_test.jpg");
 	    Scene scene = new Scene(rootLayout);
 	    primaryStage.setScene(scene);
 	    
