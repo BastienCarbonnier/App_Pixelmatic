@@ -32,7 +32,8 @@ public class IOFile {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save As..");
 			fileChooser.setInitialFileName(ImagePath);
-			File selectedFile = fileChooser.showOpenDialog(null);
+			
+			File selectedFile = fileChooser.showSaveDialog(null);
 			System.out.println(selectedFile.getPath());
 			askcopy(ImagePath, selectedFile.getPath());			
 			return selectedFile.getPath();
