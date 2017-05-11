@@ -102,4 +102,7 @@ public class ColorEffects{
 	    ImageIO.write(img, "PNG", f);
 	   
 	}
+	public static void test(String imagePath){
+		
+	}
 }

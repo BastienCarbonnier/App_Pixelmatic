@@ -17,7 +17,9 @@ import static java.nio.file.StandardCopyOption.*;
 public class IOFile {
 	
 	
-	public static String selectImage(File selectedFile){		
+	public static String selectImage(File selectedFile){
+		if (selectedFile==null)
+			return null;
 		
 		return selectedFile.getPath();
 		

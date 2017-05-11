@@ -106,6 +106,34 @@ public class ToolbarButtonView {
 				
 			});
 	        
+	        Button buttonTestDylan = new Button("Dylan");
+			
+	        buttonTestDylan.autosize();
+	        buttonTestDylan.setOnAction(actionEvent -> {
+				
+					try {
+						ButtonHandling.testDylan();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+			});
+	        
+	        Button buttonTestJorge = new Button("Jorge");
+			
+	        buttonTestJorge.autosize();
+	        buttonTestJorge.setOnAction(actionEvent -> {
+				
+					try {
+						ButtonHandling.testJorge();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+			});
+	        
 			ToolBar toolBar = new ToolBar(
 		    	     buttonEffect1,
 		    	     buttonEffect2,
@@ -114,7 +142,10 @@ public class ToolbarButtonView {
 		    	     buttonEffect5,
 		    	     buttonEffect6,
 		    	     buttonEffect7,
-		    	     buttonEffect8
+		    	     buttonEffect8,
+		    	     buttonTestDylan,
+		    	     buttonTestJorge
+		    	     
 		    	 );
 			
 			return toolBar;

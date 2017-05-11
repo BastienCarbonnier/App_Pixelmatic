@@ -54,6 +54,7 @@ public class InterfaceView {
 	    buttonFirstSelectImage.autosize();
 	    buttonFirstSelectImage.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
+	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
 	        File file = fileChooser.showOpenDialog(null); 
 	        IOController.openImage(file);
 		});

@@ -10,8 +10,12 @@ import view.InterfaceView;
 
 public class IOController {
 	public static void openImage(File selectedFile){
-		
-		WorkArea.setBaseImagePath(IOFile.selectImage(selectedFile));
+		String name=IOFile.selectImage(selectedFile);
+		if(name==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		WorkArea.setBaseImagePath(name);
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
 	public static void saveAsImage() throws IOException{

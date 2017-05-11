@@ -9,6 +9,7 @@ import model.ContourEffects;
 import model.FlouEffects;
 import model.IOFile;
 import model.ModifyPath;
+import model.StructureEffects;
 import view.InterfaceView;
 
 public class ButtonHandling {
@@ -146,6 +147,40 @@ public class ButtonHandling {
 		WorkArea.setCurrentImagePath(currentImagePath);
 		
 		ContourEffects.applyEstampageEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	public static void testDylan() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ColorEffects.test(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	public static void testJorge() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		StructureEffects.test(currentImagePath);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
