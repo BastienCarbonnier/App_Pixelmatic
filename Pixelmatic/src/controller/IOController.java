@@ -6,11 +6,13 @@ import java.io.IOException;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import model.IOFile;
+import view.InterfaceView;
 
 public class IOController {
 	public static void openImage(File selectedFile){
 		
 		WorkArea.setBaseImagePath(IOFile.selectImage(selectedFile));
+		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
 	public static void saveAsImage() throws IOException{
 		System.out.println(WorkArea.getBaseImagePath());
