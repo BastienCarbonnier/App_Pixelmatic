@@ -102,7 +102,53 @@ public class ColorEffects{
 	    ImageIO.write(img, "PNG", f);
 	   
 	}
-	public static void test(String imagePath){
+	public static void applyPosterizeEffect(String imagePath) throws IOException{
+		BufferedImage img = null;
+	    File f = null;
+	    //read image
+	    
+	    f = new File(imagePath);
+	    img = ImageIO.read(f);
+	    
+	    //get image width and height
+	    int width = img.getWidth();
+	    int height = img.getHeight();
+	    //convert to negative
+	    for(int y = 0; y < height; y++){
+	      for(int x = 0; x < width; x++){
+	        int p = img.getRGB(x,y);
+	        int a = (p>>24)&0XFF; 
+	        int r = (p>>16)&0xFF;
+	        int g = (p>>8)&0xFF;
+	        int b = (p&0xff);
+	       
+	        //subtract RGB from 255
+	        r=roundingpx(r);
+	        g=roundingpx(g);
+	        b=roundingpx(b);
+	        //set new RGB value
+	        p = (a<<24) | (r<<16) | (g<<8) | b;
+	        img.setRGB(x, y, p);
+	      }
+	    }
+	    //write image
+	    f = new File(imagePath);
+	    ImageIO.write(img, "PNG", f);
 		
 	}
+	
+	public static int roundingpx (int px) {
+		if (px<62) {
+			px=31;}
+		else if (px<124) {
+			px=93;}
+		else if (px<186) {
+			px=155;}
+		else {
+			px=221;
+		}
+		return px;
+	}
+		
+	
 }
