@@ -51,9 +51,8 @@ public class InterfaceView {
 		MenuBar menu=MenuBarView.createMenuBar();
 		menu.prefWidthProperty().bind(primaryStage.widthProperty());
 	    rootLayout.setTop(menu);
-	    MenuButton m = new MenuButton("Eats");
-	    m.getItems().addAll(new MenuItem("Burger"), new MenuItem("Hot Dog"));
-	    rootLayout.setLeft(m);//ToolbarButtonView.createToolbar());
+	    
+	    rootLayout.setLeft(ToolbarButtonView.createToolbar());
 	    
 	    Button buttonFirstSelectImage = new Button("Cliquez pour selectionner une image...");
 	    buttonFirstSelectImage.autosize();
@@ -83,11 +82,11 @@ public class InterfaceView {
     		image.setPreserveRatio(true);
     		image.setFitHeight(600);
     		image.setFitWidth(600);
-    		primaryStage.setMinHeight(600+50);
-    	    primaryStage.setMinWidth(600+50);
+    		primaryStage.setMinHeight(600+100);
+    	    primaryStage.setMinWidth(600+140);
     	}else{
-    		primaryStage.setMinHeight(image.getImage().getHeight()+50);
-    	    primaryStage.setMinWidth(image.getImage().getWidth()+50);
+    		primaryStage.setMinHeight(image.getImage().getHeight()+100);
+    	    primaryStage.setMinWidth(image.getImage().getWidth()+140);
     	}
     	rootLayout.setCenter(image);
     	

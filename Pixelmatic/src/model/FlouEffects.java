@@ -17,9 +17,9 @@ public class FlouEffects {
 		//ImageView image=new ImageView(new File(imagePath).toURI().toString());
 		//image.setEffect(new GaussianBlur());
 		float[ ] matrice_gaussian = { 
-			    0.1f, 0.1f, 0.1f, 
-			    0.1f, 0.2f, 0.1f, 
-			    0.1f, 0.1f, 0.1f 
+			    -5f, 0f, 0f, 
+			    0f, 0f, 0f, 
+			    0f, 0f, 5f,  
 			}; 
 		
 	    BufferedImage img = ImageIO.read(new File(imagePath));
@@ -30,7 +30,12 @@ public class FlouEffects {
 	
 	public static void applyBlurEffect(String imagePath){
 		
-		// cette méthode ne modifie pas l'image 
+		float[ ] matrice_blur = { 
+			    -1f, -1f, -1f, 
+			    -1f, 8f, -1f, 
+			    -1f, -1f, -1f 
+			}; 
+		 
 		ImageView image=new ImageView(new File(imagePath).toURI().toString());
 		
 		BoxBlur boxBlur = new BoxBlur();

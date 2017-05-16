@@ -6,6 +6,8 @@ import controller.ButtonHandling;
 import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
 
@@ -14,15 +16,15 @@ public class ToolbarButtonView {
 	
 		public static ToolBar createToolbar(){
 			ToolBar toolBar;
+			
 			Button buttonEffect1 = new Button("Non-Modifie");
 		
-		    buttonEffect1.autosize();
+		    buttonEffect1.setOnAction(actionEvent -> ButtonHandling.showBaseImage());
 		    
-	        buttonEffect1.setOnAction(actionEvent -> ButtonHandling.showBaseImage());
+	        
+		    MenuItem itemEffect2 = new MenuItem("Noir/Blanc");
 		    
-		    Button buttonEffect2 = new Button("Noir/Blanc");
-		    //buttonEffect2.autosize();
-		    buttonEffect2.setOnAction(actionEvent -> {
+		    itemEffect2.setOnAction(actionEvent -> {
 				try {
 					ButtonHandling.useBlackAndWhiteEffect();
 				} catch (IOException e) {
@@ -31,10 +33,10 @@ public class ToolbarButtonView {
 				}
 			});
 		    
-		    Button buttonEffect3 = new Button("Flou Gaussien");
+		    MenuItem itemEffect3 = new MenuItem("Flou Gaussien");
 			
-		    buttonEffect3.autosize();
-	        buttonEffect3.setOnAction(actionEvent -> {
+		    
+	        itemEffect3.setOnAction(actionEvent -> {
 				try {
 					ButtonHandling.useGaussianEffect();
 				} catch (IOException e) {
@@ -43,10 +45,10 @@ public class ToolbarButtonView {
 				}
 			});
 	        
-	        Button buttonEffect4 = new Button("Trouble");
+	        MenuItem itemEffect4 = new MenuItem("Trouble");
 			
-		    buttonEffect4.autosize();
-	        buttonEffect4.setOnAction(actionEvent -> {
+		    
+	        itemEffect4.setOnAction(actionEvent -> {
 				try {
 					ButtonHandling.useBlurEffect();
 				} catch (IOException e) {
@@ -55,11 +57,11 @@ public class ToolbarButtonView {
 				}
 			});
 	        
-	        Button buttonEffect5 = new Button("Sepia");
+	        MenuItem itemEffect5 = new MenuItem("Sepia");
 			
-		    //buttonEffect5.autosize();
+		    
 	        
-	        buttonEffect5.setOnAction(actionEvent -> {
+	        itemEffect5.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useSepiaEffect();
@@ -70,10 +72,10 @@ public class ToolbarButtonView {
 				
 			});
 	        
-	        Button buttonEffect6 = new Button("Negatif");
+	        MenuItem itemEffect6 = new MenuItem("Negatif");
 			
-		    buttonEffect6.autosize();
-	        buttonEffect6.setOnAction(actionEvent -> {
+		    
+	        itemEffect6.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useNegativeEffect();
@@ -83,10 +85,10 @@ public class ToolbarButtonView {
 					}
 				
 			});
-	        Button buttonEffect7 = new Button("Accentuation");
+	        MenuItem itemEffect7 = new MenuItem("Accentuation");
 			
-		    buttonEffect7.autosize();
-	        buttonEffect7.setOnAction(actionEvent -> {
+		    
+	        itemEffect7.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useAccentuationEffect();
@@ -97,10 +99,10 @@ public class ToolbarButtonView {
 				
 			});
 	        
-	        Button buttonEffect8 = new Button("Estampage");
+	        MenuItem itemEffect8 = new MenuItem("Estampage");
 			
-		    buttonEffect8.autosize();
-	        buttonEffect8.setOnAction(actionEvent -> {
+		    
+	        itemEffect8.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useEstampageEffect();
@@ -113,7 +115,7 @@ public class ToolbarButtonView {
 	        
 	        Button buttonTestDylan = new Button("Dylan");
 			
-	        buttonTestDylan.autosize();
+	      
 	        buttonTestDylan.setOnAction(actionEvent -> {
 				
 					try {
@@ -127,7 +129,7 @@ public class ToolbarButtonView {
 	        
 	        Button buttonTestJorge = new Button("Jorge");
 			
-	        buttonTestJorge.autosize();
+	        
 	        buttonTestJorge.setOnAction(actionEvent -> {
 				
 					try {
@@ -139,31 +141,38 @@ public class ToolbarButtonView {
 				
 			});
 	        
-	        
+	        MenuButton menuButtonColor = new MenuButton("Couleur");
+	        menuButtonColor.getItems().addAll(
+	        		 itemEffect2,
+		    	     itemEffect5,
+		    	     itemEffect6
+		    	     
+	        		);
+	        MenuButton menuButtonContour = new MenuButton("Contour");
+	        menuButtonContour.getItems().addAll(
+		    	     itemEffect7,
+		    	     itemEffect8
+	        		);
+	        MenuButton menuButtonFlou = new MenuButton("Flou");
+	        menuButtonFlou.getItems().addAll(
+		    	     itemEffect3,
+		    	     itemEffect4
+	        		);
 			toolBar = new ToolBar(
-		    	     buttonEffect1,
-		    	     buttonEffect2,
-		    	     //buttonEffect3,
-		    	     //buttonEffect4,
-		    	     buttonEffect5,
-		    	     buttonEffect6,
-		    	     buttonEffect7,
-		    	     buttonEffect8,
-		    	     buttonTestDylan,
-		    	     buttonTestJorge
+					buttonEffect1,
+		    	    menuButtonColor,
+		    	    menuButtonContour,
+		    	    menuButtonFlou,
+		    	    buttonTestDylan,
+		    	    buttonTestJorge
 		    	     
 		    	 );
 			toolBar.setOrientation(Orientation.VERTICAL);
 			toolBar.setPrefWidth(100);
-			
 			buttonEffect1.setPrefWidth(100);
-			buttonEffect2.setPrefWidth(100);
-			buttonEffect3.setPrefWidth(100);
-			buttonEffect4.setPrefWidth(100);
-			buttonEffect5.setPrefWidth(100);
-			buttonEffect6.setPrefWidth(100);
-			buttonEffect7.setPrefWidth(100);
-			buttonEffect8.setPrefWidth(100);
+			menuButtonColor.setPrefWidth(100);
+			menuButtonContour.setPrefWidth(100);
+			menuButtonFlou.setPrefWidth(100);
 			buttonTestDylan.setPrefWidth(100);
 			buttonTestJorge.setPrefWidth(100);
 		
