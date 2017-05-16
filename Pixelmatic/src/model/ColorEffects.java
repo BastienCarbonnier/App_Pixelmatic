@@ -137,6 +137,9 @@ public class ColorEffects{
 		
 	}
 	
+	public static void test(String imagePath) throws IOException{
+	}
+	
 	public static int roundingpx (int px) {
 		if (px<62) {
 			px=31;}
