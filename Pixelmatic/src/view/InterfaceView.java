@@ -6,9 +6,13 @@ import controller.IOController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -47,8 +51,9 @@ public class InterfaceView {
 		MenuBar menu=MenuBarView.createMenuBar();
 		menu.prefWidthProperty().bind(primaryStage.widthProperty());
 	    rootLayout.setTop(menu);
-		
-	    rootLayout.setBottom(ToolbarButtonView.createToolbar());
+	    MenuButton m = new MenuButton("Eats");
+	    m.getItems().addAll(new MenuItem("Burger"), new MenuItem("Hot Dog"));
+	    rootLayout.setLeft(m);//ToolbarButtonView.createToolbar());
 	    
 	    Button buttonFirstSelectImage = new Button("Cliquez pour selectionner une image...");
 	    buttonFirstSelectImage.autosize();

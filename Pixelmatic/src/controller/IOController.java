@@ -10,7 +10,12 @@ import view.InterfaceView;
 
 public class IOController {
 	public static void openImage(File selectedFile){
+		if(WorkArea.getBaseImagePath()!=WorkArea.getCurrentImagePath()) {
+			File current=new File(WorkArea.getCurrentImagePath());
+			current.delete();
+		}
 		String name=IOFile.selectImage(selectedFile);
+		
 		if(name==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
@@ -19,7 +24,6 @@ public class IOController {
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
 	public static void saveAsImage() throws IOException{
-		System.out.println(WorkArea.getBaseImagePath());
 		IOFile.saveAs(WorkArea.getCurrentImagePath());
 	}
 	public static void exit(){
