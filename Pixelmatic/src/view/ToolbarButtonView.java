@@ -112,6 +112,19 @@ public class ToolbarButtonView {
 					}
 				
 			});
+	        MenuItem itemEffect9 = new MenuItem("Posterisation");
+			
+		    
+	        itemEffect8.setOnAction(actionEvent -> {
+				
+					try {
+						ButtonHandling.usePosterizeEffect();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+			});
 	        
 	        Button buttonTestDylan = new Button("Dylan");
 			
@@ -145,7 +158,8 @@ public class ToolbarButtonView {
 	        menuButtonColor.getItems().addAll(
 	        		 itemEffect2,
 		    	     itemEffect5,
-		    	     itemEffect6
+		    	     itemEffect6,
+		    	     itemEffect9
 		    	     
 	        		);
 	        MenuButton menuButtonContour = new MenuButton("Contour");

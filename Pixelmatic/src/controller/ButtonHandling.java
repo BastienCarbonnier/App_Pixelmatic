@@ -115,6 +115,25 @@ public class ButtonHandling {
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
+	
+	
+	public static void usePosterizeEffect() throws IOException{
+		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		String baseImagePath=WorkArea.getBaseImagePath();
+		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		
+		IOFile.askcopy(baseImagePath,currentImagePath);
+		WorkArea.setCurrentImagePath(currentImagePath);
+		
+		ColorEffects.applyPosterizeEffect(currentImagePath);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
 	public static void useAccentuationEffect() throws IOException{
 		
 		if (WorkArea.getBaseImagePath()==null){
