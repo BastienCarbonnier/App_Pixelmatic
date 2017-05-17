@@ -23,7 +23,9 @@ public class ColorEffects{
         g.dispose();
         ImageIO.write(imagedst, "PNG", new File(imagePath));
 	}
+	public static void test(String imagePath) throws IOException{
 	
+	}
 	public static void applySepiaEffect(String imagePath) throws IOException{
 		BufferedImage img = null;
 	    File f = null;
