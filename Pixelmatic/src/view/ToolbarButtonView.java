@@ -115,7 +115,7 @@ public class ToolbarButtonView {
 	        MenuItem itemEffect9 = new MenuItem("Posterisation");
 			
 		    
-	        itemEffect8.setOnAction(actionEvent -> {
+	        itemEffect9.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.usePosterizeEffect();
@@ -183,12 +183,12 @@ public class ToolbarButtonView {
 		    	 );
 			toolBar.setOrientation(Orientation.VERTICAL);
 			toolBar.setPrefWidth(100);
-			buttonEffect1.setPrefWidth(100);
-			menuButtonColor.setPrefWidth(100);
-			menuButtonContour.setPrefWidth(100);
-			menuButtonFlou.setPrefWidth(100);
-			buttonTestDylan.setPrefWidth(100);
-			buttonTestJorge.setPrefWidth(100);
+			buttonEffect1.setPrefWidth(toolBar.getPrefWidth());
+			menuButtonColor.setPrefWidth(toolBar.getPrefWidth());
+			menuButtonContour.setPrefWidth(toolBar.getPrefWidth());
+			menuButtonFlou.setPrefWidth(toolBar.getPrefWidth());
+			buttonTestDylan.setPrefWidth(toolBar.getPrefWidth());
+			buttonTestJorge.setPrefWidth(toolBar.getPrefWidth());
 		
 			
 			return toolBar;

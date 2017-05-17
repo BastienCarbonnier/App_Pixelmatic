@@ -16,9 +16,9 @@ public class FlouEffects {
 	public static void applyGaussianEffect(String imagePath) throws IOException{
 		
 		float[ ] matrice_gaussian = { 
-			    1/10f, 1/10f, 1/10f, 
-			    1/10f, 1/10f, 1/10f, 
-			    1/10f, 1/10f, 1/10f,  
+			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), 
+			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), 
+			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3),  
 			}; 
 		
 	    BufferedImage img = ImageIO.read(new File(imagePath));
