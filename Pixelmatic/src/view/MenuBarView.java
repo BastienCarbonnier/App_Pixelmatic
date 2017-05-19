@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
 import java.io.File;
 import java.io.IOException;
 
@@ -12,6 +14,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import model.IOFile;
 
 public class MenuBarView {
 	
@@ -25,13 +28,15 @@ public class MenuBarView {
 	    Menu helpMenu = new Menu("Aide");
 	    MenuItem exitMenuItem = new MenuItem("Exit");
 	    MenuItem openMenuItem = new MenuItem("Open");
+	    MenuItem saveMenuItem = new MenuItem("Save");
 	    MenuItem saveAsMenuItem = new MenuItem("SaveAs..");
+	    MenuItem getHelpItem= new MenuItem("get help");
 	    
 	    
 	        
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
-	    fileMenu.getItems().addAll(openMenuItem, saveAsMenuItem);
-	    
+	    fileMenu.getItems().addAll(openMenuItem, saveMenuItem, saveAsMenuItem);
+	    helpMenu.getItems().addAll(getHelpItem);
 	    exitMenuItem.setOnAction(actionEvent -> IOController.exit());
 	    
 	    openMenuItem.setOnAction(actionEvent -> {	    
@@ -41,7 +46,10 @@ public class MenuBarView {
 		        IOController.openImage(file);
 			
 		});
-	    
+	    getHelpItem.setOnAction(actionEvent -> {
+	    	IOFile.openBrowser();
+
+	    });
 	    saveAsMenuItem.setOnAction(actionEvent -> {	    
 	        try {
 				IOController.saveAsImage();
@@ -51,6 +59,15 @@ public class MenuBarView {
 			}
 		});
 	    
+	    
+	    saveMenuItem.setOnAction(actionEvent -> {	    
+	        try {
+				IOController.saveImage();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	    menuBar.getMenus().addAll(pixelmaticMenu,fileMenu,editMenu,helpMenu);
 	    return menuBar;
 	}

@@ -26,6 +26,9 @@ public class IOController {
 	public static void saveAsImage() throws IOException{
 		IOFile.saveAs(WorkArea.getCurrentImagePath());
 	}
+	public static void saveImage() throws IOException {
+		IOFile.save(WorkArea.getCurrentImagePath());
+	}
 	public static void exit(){
 		if(WorkArea.getBaseImagePath()!=WorkArea.getCurrentImagePath()) {
 			File current=new File(WorkArea.getCurrentImagePath());
