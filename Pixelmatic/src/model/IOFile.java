@@ -35,7 +35,9 @@ public class IOFile {
 		String dest=WorkArea.getBaseImagePath();
 		System.out.println("source :"+ImagePath+" destination :"+dest);
 		askcopy(ImagePath, dest);
-		new File(ImagePath).delete();
+		if (ImagePath!=dest)
+			new File(ImagePath).delete();
+		WorkArea.setCurrentImagePath(dest);
 		return ImagePath;
 		
 	}
