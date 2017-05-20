@@ -1,24 +1,31 @@
 package view;
 
+import java.awt.Image;
 import java.io.File;
 import controller.WorkArea;
 import controller.IOController;
+import controller.ImageHandling;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
+import javafx.event.EventHandler;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import javafx.scene.input.*;
+import javafx.scene.text.*;
+import javafx.event.*;
 
 
 
@@ -54,16 +61,43 @@ public class InterfaceView {
 	    
 	    rootLayout.setLeft(ToolbarButtonView.createToolbar());
 	    
-	    Button buttonFirstSelectImage = new Button("Cliquez pour selectionner une image...");
+	    
+        Text texte=new Text(10,10,"déposer une image ici");
+        texte.setScaleX(2);
+        texte.setScaleY(2.5);
+        texte.autosize();
+        rootLayout.setCenter(texte);
+
+        texte.setOnDragOver(event -> {
+            event.acceptTransferModes(TransferMode.COPY);
+            
+        });
+
+        texte.setOnDragDropped(event -> {
+            Dragboard db = event.getDragboard();
+            if (db.hasImage()||db.hasFiles()) {
+
+                	File dropped=db.getFiles().get(0);  	
+                	IOController.openImage(dropped);                	                
+                event.setDropCompleted(true);
+            }
+        });
+
+
+		
+	   
+	    	/*
+	    Button buttonFirstSelectImage=new Button("afficher une image");
 	    buttonFirstSelectImage.autosize();
 	    buttonFirstSelectImage.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
 	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
 	        File file = fileChooser.showOpenDialog(null); 
+	        System.out.println(file.getAbsolutePath());
 	        IOController.openImage(file);
 		});
 	    
-	    rootLayout.setCenter(buttonFirstSelectImage);
+	    rootLayout.setCenter(buttonFirstSelectImage);*/
 	    // for test 
 	    //WorkArea.setBaseImagePath("src/view/image_test.jpg");
 	    Scene scene = new Scene(rootLayout);
@@ -73,6 +107,8 @@ public class InterfaceView {
     
     public static void showImage(String img){
     	ImageView image=new ImageView(new File(img).toURI().toString());
+
+    	
     	//System.out.println(InterfaceView.class.getResource("/image_test.jpg"));
     	
     	
@@ -91,6 +127,7 @@ public class InterfaceView {
     	rootLayout.setCenter(image);
     	
     	System.out.println(img);
+    	
     }
     public static void showErrorMessage(String t){
     	
