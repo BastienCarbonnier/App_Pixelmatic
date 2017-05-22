@@ -26,7 +26,14 @@ public class ToolbarButtonView {
 			
 			Button buttonNoneEffect = new Button("Non-Modifie");
 		
-		    buttonNoneEffect.setOnAction(actionEvent -> ButtonHandling.showBaseImage());
+		    buttonNoneEffect.setOnAction(actionEvent -> {
+				try {
+					ButtonHandling.showBaseImage();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			});
 		    
 	        
 		    MenuItem itemEffectBlackWhite = new MenuItem("Noir/Blanc");
@@ -40,7 +47,7 @@ public class ToolbarButtonView {
 				}
 			});
 		    
-		    MenuItem itemEffectFlou1 = new MenuItem("Flou");
+		    Button itemEffectFlou1 = new Button("Flou");
 			
 		    
 	        itemEffectFlou1.setOnAction(actionEvent -> {
@@ -196,16 +203,18 @@ public class ToolbarButtonView {
 		    	     itemEffectAccentuation,
 		    	     itemEffectEstampage
 	        		);
+	        /*
 	        MenuButton menuButtonFlou = new MenuButton("Flou");
 	        menuButtonFlou.getItems().addAll(
 		    	     itemEffectFlou1
 		    	     //itemEffect4
-	        		);
+	        		);*/
 			toolBar = new ToolBar(
 					buttonNoneEffect,
 		    	    menuButtonColor,
 		    	    menuButtonContour,
-		    	    menuButtonFlou,
+		    	    //menuButtonFlou,
+		    	    itemEffectFlou1,
 		    	    buttonTestDylan,
 		    	    buttonTestJorge
 		    	     
@@ -215,7 +224,7 @@ public class ToolbarButtonView {
 			buttonNoneEffect.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonColor.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonContour.setPrefWidth(toolBar.getPrefWidth());
-			menuButtonFlou.setPrefWidth(toolBar.getPrefWidth());
+			itemEffectFlou1.setPrefWidth(toolBar.getPrefWidth());
 			buttonTestDylan.setPrefWidth(toolBar.getPrefWidth());
 			buttonTestJorge.setPrefWidth(toolBar.getPrefWidth());
 		

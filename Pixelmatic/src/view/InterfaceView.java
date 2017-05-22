@@ -93,7 +93,7 @@ public class InterfaceView {
 	    	FileChooser fileChooser = new FileChooser(); 
 	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
 	        File file = fileChooser.showOpenDialog(null); 
-	        System.out.println(file.getAbsolutePath());
+	        //System.out.println(file.getAbsolutePath());
 	        IOController.openImage(file);
 		});
 	    
@@ -172,6 +172,13 @@ public class InterfaceView {
     public static void showErrorMessage(String t){
 	    Alert alert = new Alert(AlertType.WARNING);
 	    alert.setTitle("Warning Dialog");
+	    alert.setHeaderText(t);
+	    alert.setContentText(null);
+	    alert.showAndWait();
+    }
+    public static void showInfoMessage(String t){
+	    Alert alert = new Alert(AlertType.INFORMATION);
+	    alert.setTitle("Information Dialog");
 	    alert.setHeaderText(t);
 	    alert.setContentText(null);
 	    alert.showAndWait();

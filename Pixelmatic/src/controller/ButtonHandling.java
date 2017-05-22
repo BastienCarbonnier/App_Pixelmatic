@@ -14,49 +14,52 @@ import view.InterfaceView;
 
 public class ButtonHandling {
 	
-	public static void showBaseImage(){
+	public static void showBaseImage() throws IOException{
 		
 		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
+		if (WorkArea.getCurrentImagePath()!=null){
+			String baseImagePath=WorkArea.getBaseImagePath();
+			
+			String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+			IOFile.askcopy(baseImagePath,currentImagePath);
+			WorkArea.setCurrentImagePath(currentImagePath);
+		}
 		InterfaceView.showImage(WorkArea.getBaseImagePath());
 	}
+	
+	public static void copyImageWithRightPath() throws IOException{
+		
+		if (WorkArea.getCurrentImagePath()==null){
+			String baseImagePath=WorkArea.getBaseImagePath();
+			
+			String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+			IOFile.askcopy(baseImagePath,currentImagePath);
+			
+			WorkArea.setCurrentImagePath(currentImagePath);
+		}
+	}
+	
 	public static void useBlackAndWhiteEffect() throws IOException{
 		
 		if (WorkArea.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
-		
-		String currentImagePath;
-		String baseImagePath;
-		System.out.println(WorkArea.getCurrentImagePath());
-		if (WorkArea.getCurrentImagePath()==null){
-			baseImagePath=WorkArea.getBaseImagePath();
-			
-			currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-			IOFile.askcopy(baseImagePath,currentImagePath);
-			
-			WorkArea.setCurrentImagePath(currentImagePath);
-		}
-		System.out.println(WorkArea.getCurrentImagePath());
+		copyImageWithRightPath();
 		ColorEffects.applyBlackAndWhiteEffect(WorkArea.getCurrentImagePath());
 		
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
+	
 	public static void useFlouIncrementalEffect(int strength) throws IOException{
 		
-		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		FlouEffects.applyFlouIncrementalEffect(currentImagePath,strength);
+		copyImageWithRightPath();
+		FlouEffects.applyFlouIncrementalEffect(WorkArea.getCurrentImagePath(),strength);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -67,15 +70,9 @@ public class ButtonHandling {
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
+		copyImageWithRightPath();
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		FlouEffects.applyBlurEffect(currentImagePath);
+		FlouEffects.applyBlurEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -87,13 +84,8 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		ColorEffects.applySepiaEffect(currentImagePath);
+		copyImageWithRightPath();		
+		ColorEffects.applySepiaEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -105,13 +97,10 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		copyImageWithRightPath();	
 		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
 		
-		ColorEffects.applyNegativeEffect(currentImagePath);
+		ColorEffects.applyNegativeEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -123,14 +112,9 @@ public class ButtonHandling {
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
-		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		ColorEffects.applyPosterizeEffect(currentImagePath);
+		copyImageWithRightPath();	
+				
+		ColorEffects.applyPosterizeEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -141,13 +125,9 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		copyImageWithRightPath();	
 		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		ContourEffects.applyAccentuationEffect(currentImagePath);
+		ContourEffects.applyAccentuationEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -159,13 +139,9 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		copyImageWithRightPath();	
 		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		ContourEffects.applyEstampageEffect(currentImagePath);
+		ContourEffects.applyEstampageEffect(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -176,13 +152,9 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		copyImageWithRightPath();
 		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		ColorEffects.test(currentImagePath);
+		ColorEffects.test(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -193,13 +165,9 @@ public class ButtonHandling {
 			return;
 		}
 		
-		String baseImagePath=WorkArea.getBaseImagePath();
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+		copyImageWithRightPath();
 		
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		StructureEffects.test(currentImagePath);
+		StructureEffects.test(WorkArea.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
