@@ -26,7 +26,8 @@ public class IOFile {
 		if (selectedFile==null)
 			return null;
 		WorkArea.setBaseImagePath(selectedFile.getPath());
-		WorkArea.setCurrentImagePath(selectedFile.getPath());
+		//Il faut qu'on en parle demain !!
+		//WorkArea.setCurrentImagePath(selectedFile.getPath());
 		return selectedFile.getPath();
 		
 	}

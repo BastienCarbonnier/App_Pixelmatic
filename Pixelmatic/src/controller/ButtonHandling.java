@@ -29,25 +29,26 @@ public class ButtonHandling {
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
-		String baseImagePath=WorkArea.getBaseImagePath();
 		
-		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
-		IOFile.askcopy(baseImagePath,currentImagePath);
-		
-		WorkArea.setCurrentImagePath(currentImagePath);
-		
-		
-		ColorEffects.applyBlackAndWhiteEffect(currentImagePath);
+		String currentImagePath;
+		String baseImagePath;
+		System.out.println(WorkArea.getCurrentImagePath());
+		if (WorkArea.getCurrentImagePath()==null){
+			baseImagePath=WorkArea.getBaseImagePath();
+			
+			currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+			IOFile.askcopy(baseImagePath,currentImagePath);
+			
+			WorkArea.setCurrentImagePath(currentImagePath);
+		}
+		System.out.println(WorkArea.getCurrentImagePath());
+		ColorEffects.applyBlackAndWhiteEffect(WorkArea.getCurrentImagePath());
 		
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
-	public static void useGaussianEffect() throws IOException{
+	public static void useFlouIncrementalEffect(int strength) throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
-			InterfaceView.showErrorMessage("Choisissez d'abord une image");
-			return;
-		}
 		
 		String baseImagePath=WorkArea.getBaseImagePath();
 		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
@@ -55,7 +56,7 @@ public class ButtonHandling {
 		IOFile.askcopy(baseImagePath,currentImagePath);
 		WorkArea.setCurrentImagePath(currentImagePath);
 		
-		FlouEffects.applyGaussianEffect(currentImagePath);
+		FlouEffects.applyFlouIncrementalEffect(currentImagePath,strength);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}

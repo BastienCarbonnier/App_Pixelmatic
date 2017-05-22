@@ -2,15 +2,21 @@ package view;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import controller.ButtonHandling;
 import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
-
+import javafx.stage.Popup;
+import javafx.scene.text.Text;
 
 public class ToolbarButtonView {
 	
@@ -34,12 +40,34 @@ public class ToolbarButtonView {
 				}
 			});
 		    
-		    MenuItem itemEffectFlou1 = new MenuItem("Flou Gaussien");
+		    MenuItem itemEffectFlou1 = new MenuItem("Flou");
 			
 		    
 	        itemEffectFlou1.setOnAction(actionEvent -> {
+	        	
+	        	
+	        	int strength;
+	        	List<Integer> choices = new ArrayList<>();
+	        	choices.add(1);
+	        	choices.add(2);
+	        	choices.add(3);
+	        	choices.add(5);
+	        	choices.add(10);
+	        	ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+	        	dialog.setTitle("Niveau de flou");
+	        	dialog.setHeaderText(null);
+	        	dialog.setContentText("Choisissez le niveau de flou que vous désirez :");
+
+	        	Optional<Integer> result = dialog.showAndWait();
+	        	
+	        	if (result.isPresent()){
+	        	    strength= result.get();
+	        	    
+	        	}else 
+	        		strength=0;
+	        	
 				try {
-					ButtonHandling.useGaussianEffect();
+					ButtonHandling.useFlouIncrementalEffect(strength);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -170,8 +198,8 @@ public class ToolbarButtonView {
 	        		);
 	        MenuButton menuButtonFlou = new MenuButton("Flou");
 	        menuButtonFlou.getItems().addAll(
-		    	     itemEffectFlou1,
-		    	     itemEffect4
+		    	     itemEffectFlou1
+		    	     //itemEffect4
 	        		);
 			toolBar = new ToolBar(
 					buttonNoneEffect,

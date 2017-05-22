@@ -13,7 +13,7 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.ImageView;
 
 public class FlouEffects {
-	public static void applyGaussianEffect(String imagePath) throws IOException{
+	public static void applyFlouIncrementalEffect(String imagePath,int strength) throws IOException{
 		
 		float[ ] matrice_gaussian = { 
 			    1/16f, 2/16f, 1/16f,
@@ -21,16 +21,15 @@ public class FlouEffects {
 			    1/16f, 2/16f, 1/16f,  
 			}; 
 		
-		float[] matrice ={
-				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
-				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
-				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
-				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
-				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
-		};
+		float matrice_size=(2+strength)*(2+strength);
+		
+		float[] matrice_flou=new float[(int) matrice_size];
+		
+		for (int i=0;i<matrice_size;i++)
+			matrice_flou[i]=(float)(1/matrice_size);
 		
 	    BufferedImage img = ImageIO.read(new File(imagePath));
-		BufferedImageOp op = new ConvolveOp(new Kernel(5,5,matrice)); 
+		BufferedImageOp op = new ConvolveOp(new Kernel(2+strength,2+strength,matrice_flou)); 
 		BufferedImage nouvelleImage = op.filter(img, null);
 		ImageIO.write(nouvelleImage, "PNG",new File(imagePath));
 	}

@@ -6,6 +6,8 @@ import controller.WorkArea;
 import controller.IOController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.event.EventHandler;
@@ -21,6 +23,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
@@ -132,6 +135,7 @@ public class InterfaceView {
     	System.out.println(img);
     	
     }
+    /*
     public static void showErrorMessage(String t){
     	
     	Text text=new Text(t);
@@ -164,8 +168,19 @@ public class InterfaceView {
     
     	errorStage.showAndWait();
     	
+    }*/
+    public static void showErrorMessage(String t){
+	    Alert alert = new Alert(AlertType.WARNING);
+	    alert.setTitle("Warning Dialog");
+	    alert.setHeaderText(t);
+	    alert.setContentText(null);
+	    alert.showAndWait();
     }
     
+    
+    public static void showPopUp(Popup pop){
+    	pop.show(primaryStage);
+    }
      
     
 	
