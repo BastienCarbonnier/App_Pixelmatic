@@ -71,7 +71,9 @@ public class InterfaceView {
 	 * It set the title of the stage and it initial size and to finish,
 	 * It execute createRootLayout() method.
 	 * 
+	 * @param	primary initial Stage given by the MainApplication
 	 * @see		Stage
+	 * 
 	 */
 	
 	public InterfaceView(Stage primary){
@@ -108,7 +110,6 @@ public class InterfaceView {
 	 * 
 	 * @see		BorderPane
 	 * @see		MenuBar
-	 * @see		ToolBar
 	 * @see		Stage
 	 * @see		Scene
 	 */
