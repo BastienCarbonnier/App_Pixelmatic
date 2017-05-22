@@ -29,74 +29,138 @@ import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.event.*;
 
-
+/**
+ * This class is the nerve center of our application.
+ * It allow us to create all the components we need 
+ * and assemble them to obtain the user interface.
+ * This is the main class of view package.
+ * <p>
+ * InterfaceView got two properties :
+ * -	primaryStage (the main window)
+ * -	rootLayout (the main layout)
+ * <p>
+ * In order to use this class's properties in all our 
+ * program, we choose initialize them in static.
+ * 
+ * @author Bastien Carbonnier
+ * @see		Stage
+ * @see		BorderPane
+ */
 
 public class InterfaceView {
 	
-	
+	/**
+	 * This properties corresponding to the application's window.
+	 * @see		Stage
+	 * */
 	private static Stage primaryStage;
 	
-	
+	/**
+	 * This properties corresponding to the application's form.
+	 * With this BorderPane Layout, we can put some elements in
+	 * the left, in the center, in the right, in the top or in
+	 * the bottom of the Stage were it will be affected.
+	 * 
+	 * @see		BorderPane
+	 * */
 	private static BorderPane rootLayout;
+	
+	/**
+	 * This constructor configure the primary Stage by using the one 
+	 * which is in the parameters.
+	 * It set the title of the stage and it initial size and to finish,
+	 * It execute createRootLayout() method.
+	 * 
+	 * @see		Stage
+	 */
 	
 	public InterfaceView(Stage primary){
 		primaryStage=primary;
 	    primaryStage.setTitle("Pixelmatic");
-	    primaryStage.setMinHeight(400);
-	    primaryStage.setMinWidth(400);
+	    primaryStage.setMinHeight(300);
+	    primaryStage.setMinWidth(500);
 	    
 	    
 	    createRootLayout();
 	}
 	
+	/**
+	 * This method show the primary Stage which is actually the 
+	 * main window of our application.
+	 * 
+	 * @see		Stage
+	 */
+	
 	public void show(){
 		primaryStage.show();
 	}
+	
+	/**
+	 * This method create the root layout of the application.
+	 * It create all component that will be necessary and assemble it 
+	 * on the BorderPane.
+	 * Component :
+	 * -	MenuBar
+	 * -	ToolBar
+	 *
+	 * And to finish, it create the Scene and use it to create the primary 
+	 * Stage (the main window).
+	 * 
+	 * @see		BorderPane
+	 * @see		MenuBar
+	 * @see		ToolBar
+	 * @see		Stage
+	 * @see		Scene
+	 */
+	
 	public void createRootLayout() {
 		
 		rootLayout = new BorderPane();
-		rootLayout.setPrefSize(600,500);
 		
+		// Create menu for the top of the layout
 		MenuBar menu=MenuBarView.createMenuBar();
 		menu.prefWidthProperty().bind(primaryStage.widthProperty());
 	    rootLayout.setTop(menu);
 	    
+	    // Create toolbar for the left of the layout
 	    rootLayout.setLeft(ToolbarButtonView.createToolbar());
 	    
-	    /*
-        Text texte=new Text(10,10,"déposer une image ici");
-        texte.setScaleX(2);
-        texte.setScaleY(2.5);
-        texte.autosize();
-        rootLayout.setCenter(texte);
-
-        texte.setOnDragOver(event -> {
-            event.acceptTransferModes(TransferMode.COPY);
-            
-        });
-
-        texte.setOnDragDropped(event -> {
-            Dragboard db = event.getDragboard();
-            if (db.hasImage()||db.hasFiles()) {
-
-                	File dropped=db.getFiles().get(0);  	
-                	IOController.openImage(dropped);                	                
-                event.setDropCompleted(true);
-            }
-        });*/
+	    /** 
+	     * Create a button for center of the layout.
+	     * It will be created only one time in the launch of the 
+	     * application.
+	     * */
 	    
-	    Button buttonFirstSelectImage=new Button("Cliquez ou deposez une image...");
+	    rootLayout.setCenter(createButtonFirstImageSelection());
+	    
+	    Scene scene = new Scene(rootLayout);
+	    primaryStage.setScene(scene);
+	    
+	}
+    
+	/**
+     * We create a button that will be used only one time, when we'll
+     * open the application.
+     * <p>
+     * We have configured this button so that it can receive an image 
+     * by drag and drop.
+     * @return	A button plainly configured
+     * 
+     * */
+	public static Button createButtonFirstImageSelection(){
+		Button buttonFirstSelectImage=new Button("Cliquez ou deposez une image...");
 	    buttonFirstSelectImage.setFont(new Font(20));
 	    buttonFirstSelectImage.setPrefSize(400, 200);
 	    
+	    // Set OnClick event
 	    buttonFirstSelectImage.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
 	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
 	        File file = fileChooser.showOpenDialog(null); 
-	        //System.out.println(file.getAbsolutePath());
 	        IOController.openImage(file);
 		});
 	    
+	    // Set OnDrag events
 	    buttonFirstSelectImage.setOnDragOver(event -> {
             event.acceptTransferModes(TransferMode.COPY);
         });
@@ -109,14 +173,22 @@ public class InterfaceView {
                 event.setDropCompleted(true);
             }
         });
-	    
-	    rootLayout.setCenter(buttonFirstSelectImage);
-	    
-	    Scene scene = new Scene(rootLayout);
-	    primaryStage.setScene(scene);
-	    
+	    return buttonFirstSelectImage;
 	}
-    
+	
+	
+	/**
+	 * This method draw the image (corresponding to the String path 
+	 * passed in parameter) on the center of the screen by using the root 
+	 * BorderPane. 
+	 *
+	 * This method auto-adjust the size of the image for the window with 
+	 * security margin.
+	 * 
+	 * @param  img  the location of the image
+	 * @see			ImageView
+	 * @see			BorderPane
+	 */
     public static void showImage(String img){
     	ImageView image=new ImageView(new File(img).toURI().toString());
     	
@@ -135,60 +207,42 @@ public class InterfaceView {
     	System.out.println(img);
     	
     }
-    /*
-    public static void showErrorMessage(String t){
-    	
-    	Text text=new Text(t);
-    	text.setFont(Font.getDefault());
-    	
-    	Stage errorStage=new Stage();
-    	//tell stage it is meant to pop-up (Modal)
-        errorStage.initModality(Modality.APPLICATION_MODAL);
-    	errorStage.setTitle("Pixelmatic");
-    	errorStage.setMaxHeight(100);
-    	errorStage.setMinHeight(100);
-    	errorStage.setMaxWidth(200);
-    	errorStage.setMinWidth(200);
-    	
-    	BorderPane errorLayout=new BorderPane();
-    	errorLayout.setPrefSize(100,200);
-    	errorLayout.setCenter(text);
-    	
-    	Button buttonClosePopUp = new Button("Fermer");
-    	buttonClosePopUp.autosize();
-    	buttonClosePopUp.setOnAction(actionEvent -> {
-	    	errorStage.close();
-		});
-    	
-    	BorderPane.setAlignment(buttonClosePopUp, Pos.CENTER);
-    	errorLayout.setBottom(buttonClosePopUp);
-    	
-    	Scene errorScene = new Scene(errorLayout);
-    	errorStage.setScene(errorScene);
+   
+    /**
+	 * This method show a Pop-up window with a warning form. 
+	 * It takes in parameter the message that will be print 
+	 * on the Screen.
+	 * 
+	 * @param  message  message we want to show
+	 * @see				Alert
+	 * 
+	 */
     
-    	errorStage.showAndWait();
-    	
-    }*/
-    public static void showErrorMessage(String t){
+    public static void showErrorMessage(String message){
 	    Alert alert = new Alert(AlertType.WARNING);
 	    alert.setTitle("Warning Dialog");
-	    alert.setHeaderText(t);
+	    alert.setHeaderText(message);
 	    alert.setContentText(null);
 	    alert.showAndWait();
     }
-    public static void showInfoMessage(String t){
+    
+    /**
+	 * This method show a Pop-up window with an informational form. 
+	 * It takes in parameter the message that will be print 
+	 * on the Screen.
+	 * 
+	 * @param  message  message we want to show
+	 * @see				Alert
+	 * 
+	 */
+    public static void showInfoMessage(String message){
 	    Alert alert = new Alert(AlertType.INFORMATION);
 	    alert.setTitle("Information Dialog");
-	    alert.setHeaderText(t);
+	    alert.setHeaderText(message);
 	    alert.setContentText(null);
 	    alert.showAndWait();
     }
-    
-    
-    public static void showPopUp(Popup pop){
-    	pop.show(primaryStage);
-    }
-     
+       
     
 	
 }

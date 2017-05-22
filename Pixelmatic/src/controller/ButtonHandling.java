@@ -4,6 +4,8 @@ package controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import model.ColorEffects;
 import model.ContourEffects;
 import model.FlouEffects;
@@ -12,7 +14,21 @@ import model.ModifyPath;
 import model.StructureEffects;
 import view.InterfaceView;
 
+/**
+ * This class handle all Button in our application.
+ * When a button event happen the method that it call
+ * is located in this class. 
+ * <p>
+ * This is why we can find it in the controller package because 
+ * it bind the view's method and the model's method.
+ *   
+ * @author Bastien Carbonnier
+ * 
+ * @see		WorkArea
+ */
+
 public class ButtonHandling {
+	
 	
 	public static void showBaseImage() throws IOException{
 		
