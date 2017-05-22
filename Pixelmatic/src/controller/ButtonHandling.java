@@ -30,8 +30,7 @@ public class ButtonHandling {
 			return;
 		}
 		String baseImagePath=WorkArea.getBaseImagePath();
-		// to hide image
-		//String currentImagePath=ModifyPath.hideFilePathName(ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp"));
+		
 		String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
 		IOFile.askcopy(baseImagePath,currentImagePath);
 		

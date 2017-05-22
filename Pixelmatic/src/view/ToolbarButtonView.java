@@ -15,16 +15,17 @@ import javafx.scene.layout.VBox;
 public class ToolbarButtonView {
 	
 		public static ToolBar createToolbar(){
+			
 			ToolBar toolBar;
 			
-			Button buttonEffect1 = new Button("Non-Modifie");
+			Button buttonNoneEffect = new Button("Non-Modifie");
 		
-		    buttonEffect1.setOnAction(actionEvent -> ButtonHandling.showBaseImage());
+		    buttonNoneEffect.setOnAction(actionEvent -> ButtonHandling.showBaseImage());
 		    
 	        
-		    MenuItem itemEffect2 = new MenuItem("Noir/Blanc");
+		    MenuItem itemEffectBlackWhite = new MenuItem("Noir/Blanc");
 		    
-		    itemEffect2.setOnAction(actionEvent -> {
+		    itemEffectBlackWhite.setOnAction(actionEvent -> {
 				try {
 					ButtonHandling.useBlackAndWhiteEffect();
 				} catch (IOException e) {
@@ -33,10 +34,10 @@ public class ToolbarButtonView {
 				}
 			});
 		    
-		    MenuItem itemEffect3 = new MenuItem("Flou Gaussien");
+		    MenuItem itemEffectFlou1 = new MenuItem("Flou Gaussien");
 			
 		    
-	        itemEffect3.setOnAction(actionEvent -> {
+	        itemEffectFlou1.setOnAction(actionEvent -> {
 				try {
 					ButtonHandling.useGaussianEffect();
 				} catch (IOException e) {
@@ -57,11 +58,11 @@ public class ToolbarButtonView {
 				}
 			});
 	        
-	        MenuItem itemEffect5 = new MenuItem("Sepia");
+	        MenuItem itemEffectSepia = new MenuItem("Sepia");
 			
 		    
 	        
-	        itemEffect5.setOnAction(actionEvent -> {
+	        itemEffectSepia.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useSepiaEffect();
@@ -72,10 +73,10 @@ public class ToolbarButtonView {
 				
 			});
 	        
-	        MenuItem itemEffect6 = new MenuItem("Negatif");
+	        MenuItem itemEffectNegatif = new MenuItem("Negatif");
 			
 		    
-	        itemEffect6.setOnAction(actionEvent -> {
+	        itemEffectNegatif.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useNegativeEffect();
@@ -85,10 +86,10 @@ public class ToolbarButtonView {
 					}
 				
 			});
-	        MenuItem itemEffect7 = new MenuItem("Accentuation");
+	        MenuItem itemEffectAccentuation = new MenuItem("Accentuation");
 			
 		    
-	        itemEffect7.setOnAction(actionEvent -> {
+	        itemEffectAccentuation.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useAccentuationEffect();
@@ -99,10 +100,10 @@ public class ToolbarButtonView {
 				
 			});
 	        
-	        MenuItem itemEffect8 = new MenuItem("Estampage");
+	        MenuItem itemEffectEstampage = new MenuItem("Estampage");
 			
 		    
-	        itemEffect8.setOnAction(actionEvent -> {
+	        itemEffectEstampage.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.useEstampageEffect();
@@ -112,10 +113,10 @@ public class ToolbarButtonView {
 					}
 				
 			});
-	        MenuItem itemEffect9 = new MenuItem("Posterisation");
+	        MenuItem itemEffectPosterisation = new MenuItem("Posterisation");
 			
 		    
-	        itemEffect9.setOnAction(actionEvent -> {
+	        itemEffectPosterisation.setOnAction(actionEvent -> {
 				
 					try {
 						ButtonHandling.usePosterizeEffect();
@@ -156,24 +157,24 @@ public class ToolbarButtonView {
 	        
 	        MenuButton menuButtonColor = new MenuButton("Couleur");
 	        menuButtonColor.getItems().addAll(
-	        		 itemEffect2,
-		    	     itemEffect5,
-		    	     itemEffect6,
-		    	     itemEffect9
+	        		 itemEffectBlackWhite,
+		    	     itemEffectSepia,
+		    	     itemEffectNegatif,
+		    	     itemEffectPosterisation
 		    	     
 	        		);
 	        MenuButton menuButtonContour = new MenuButton("Contour");
 	        menuButtonContour.getItems().addAll(
-		    	     itemEffect7,
-		    	     itemEffect8
+		    	     itemEffectAccentuation,
+		    	     itemEffectEstampage
 	        		);
 	        MenuButton menuButtonFlou = new MenuButton("Flou");
 	        menuButtonFlou.getItems().addAll(
-		    	     itemEffect3,
+		    	     itemEffectFlou1,
 		    	     itemEffect4
 	        		);
 			toolBar = new ToolBar(
-					buttonEffect1,
+					buttonNoneEffect,
 		    	    menuButtonColor,
 		    	    menuButtonContour,
 		    	    menuButtonFlou,
@@ -183,7 +184,7 @@ public class ToolbarButtonView {
 		    	 );
 			toolBar.setOrientation(Orientation.VERTICAL);
 			toolBar.setPrefWidth(100);
-			buttonEffect1.setPrefWidth(toolBar.getPrefWidth());
+			buttonNoneEffect.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonColor.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonContour.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonFlou.setPrefWidth(toolBar.getPrefWidth());

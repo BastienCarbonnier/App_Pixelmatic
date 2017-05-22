@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.io.File;
 import controller.WorkArea;
 import controller.IOController;
-import controller.ImageHandling;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -61,7 +60,7 @@ public class InterfaceView {
 	    
 	    rootLayout.setLeft(ToolbarButtonView.createToolbar());
 	    
-	    
+	    /*
         Text texte=new Text(10,10,"déposer une image ici");
         texte.setScaleX(2);
         texte.setScaleY(2.5);
@@ -81,14 +80,12 @@ public class InterfaceView {
                 	IOController.openImage(dropped);                	                
                 event.setDropCompleted(true);
             }
-        });
-
-
-		
-	   
-	    	/*
-	    Button buttonFirstSelectImage=new Button("afficher une image");
-	    buttonFirstSelectImage.autosize();
+        });*/
+	    
+	    Button buttonFirstSelectImage=new Button("Cliquez ou deposez une image...");
+	    buttonFirstSelectImage.setFont(new Font(20));
+	    buttonFirstSelectImage.setPrefSize(400, 200);
+	    
 	    buttonFirstSelectImage.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
 	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
@@ -97,9 +94,21 @@ public class InterfaceView {
 	        IOController.openImage(file);
 		});
 	    
-	    rootLayout.setCenter(buttonFirstSelectImage);*/
-	    // for test 
-	    //WorkArea.setBaseImagePath("src/view/image_test.jpg");
+	    buttonFirstSelectImage.setOnDragOver(event -> {
+            event.acceptTransferModes(TransferMode.COPY);
+        });
+	    
+	    buttonFirstSelectImage.setOnDragDropped(event -> {
+            Dragboard db = event.getDragboard();
+            if (db.hasImage()||db.hasFiles()) {
+                	File dropped=db.getFiles().get(0);  	
+                	IOController.openImage(dropped);                	                
+                event.setDropCompleted(true);
+            }
+        });
+	    
+	    rootLayout.setCenter(buttonFirstSelectImage);
+	    
 	    Scene scene = new Scene(rootLayout);
 	    primaryStage.setScene(scene);
 	    
@@ -107,13 +116,7 @@ public class InterfaceView {
     
     public static void showImage(String img){
     	ImageView image=new ImageView(new File(img).toURI().toString());
-
     	
-    	//System.out.println(InterfaceView.class.getResource("/image_test.jpg"));
-    	
-    	
-    	//ImageView image=new ImageView(new File(InterfaceView.class.getResource(img).getFile()).toURI().toString());
-    	//System.out.println(InterfaceView.class.getResource(img).getFile().toString());
     	if (image.getImage().getWidth()>500||image.getImage().getHeight()>500){
     		image.setPreserveRatio(true);
     		image.setFitHeight(600);

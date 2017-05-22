@@ -16,13 +16,21 @@ public class FlouEffects {
 	public static void applyGaussianEffect(String imagePath) throws IOException{
 		
 		float[ ] matrice_gaussian = { 
-			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), 
-			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), 
-			    (float) Math.pow(0.5,3), (float) Math.pow(0.5,3), (float) Math.pow(0.5,3),  
+			    1/16f, 2/16f, 1/16f,
+			    2/16f, 4/16f, 2/16f, 
+			    1/16f, 2/16f, 1/16f,  
 			}; 
 		
+		float[] matrice ={
+				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
+				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
+				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
+				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
+				1/25f, 1/25f, 1/25f, 1/25f, 1/25f,
+		};
+		
 	    BufferedImage img = ImageIO.read(new File(imagePath));
-		BufferedImageOp op = new ConvolveOp(new Kernel(3,3,matrice_gaussian)); 
+		BufferedImageOp op = new ConvolveOp(new Kernel(5,5,matrice)); 
 		BufferedImage nouvelleImage = op.filter(img, null);
 		ImageIO.write(nouvelleImage, "PNG",new File(imagePath));
 	}
