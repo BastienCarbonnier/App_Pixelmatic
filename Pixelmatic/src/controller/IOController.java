@@ -41,12 +41,12 @@ public class IOController {
 		else
 			InterfaceView.showErrorMessage("Aucune image n'est en train d'être modifié");
 	}
+	public static void saveExit(){
+		// Oui Non Annuler
+		String result=InterfaceView.showSaveExitDialog();
+		
+	}
 	public static void exit(){
-		/*
-		if(WorkArea.getBaseImagePath()!=WorkArea.getCurrentImagePath()) {
-			File current=new File(WorkArea.getCurrentImagePath());
-			current.delete();
-		}*/
 		if(WorkArea.getCurrentImagePath()!=null) {
 			File current=new File(WorkArea.getCurrentImagePath());
 			WorkArea.setCurrentImagePath(null);

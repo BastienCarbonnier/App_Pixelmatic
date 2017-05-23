@@ -80,7 +80,7 @@ public class InterfaceView {
 		primaryStage=primary;
 	    primaryStage.setTitle("Pixelmatic");
 	    primaryStage.setMinHeight(300);
-	    primaryStage.setMinWidth(500);
+	    primaryStage.setMinWidth(525);
 	    
 	    
 	    createRootLayout();
@@ -243,6 +243,11 @@ public class InterfaceView {
 	    alert.setContentText(null);
 	    alert.showAndWait();
     }
+    
+    public static String showSaveExitDialog(){
+    	
+    	return "";
+    	}
        
     
 	

@@ -26,8 +26,6 @@ public class IOFile {
 		if (selectedFile==null)
 			return null;
 		WorkArea.setBaseImagePath(selectedFile.getPath());
-		//Il faut qu'on en parle demain !!
-		// WorkArea.setCurrentImagePath(selectedFile.getPath());
 		return selectedFile.getPath();
 		
 	}
@@ -50,7 +48,7 @@ public class IOFile {
 			fileChooser.setTitle("Save As..");
 			fileChooser.setInitialFileName(nom[0]);
 			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent())); //permet d'ouvrir directement dans le dossier de l'image source
-			File selectedFile = fileChooser.showSaveDialog(null);		//fenetre de sélection 
+			File selectedFile = fileChooser.showSaveDialog(null);		//fenetre de sélection
 			if(selectedFile==null)
 				return WorkArea.getCurrentImagePath()!=null?WorkArea.getCurrentImagePath():WorkArea.getBaseImagePath();// retourne l'image courrante si on annule
 			
