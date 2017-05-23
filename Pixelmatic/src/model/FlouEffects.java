@@ -14,13 +14,7 @@ import javafx.scene.image.ImageView;
 
 public class FlouEffects {
 	public static void applyFlouIncrementalEffect(String imagePath,int strength) throws IOException{
-		
-		float[ ] matrice_gaussian = { 
-			    1/16f, 2/16f, 1/16f,
-			    2/16f, 4/16f, 2/16f, 
-			    1/16f, 2/16f, 1/16f,  
-			}; 
-		
+			
 		float matrice_size=(2+strength)*(2+strength);
 		
 		float[] matrice_flou=new float[(int) matrice_size];
