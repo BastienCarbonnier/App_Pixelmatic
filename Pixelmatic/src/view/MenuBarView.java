@@ -37,7 +37,14 @@ public class MenuBarView {
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
 	    fileMenu.getItems().addAll(openMenuItem, saveMenuItem, saveAsMenuItem);
 	    helpMenu.getItems().addAll(getHelpItem);
-	    exitMenuItem.setOnAction(actionEvent -> IOController.exit());
+	    exitMenuItem.setOnAction(actionEvent -> {
+			try {
+				IOController.exit();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 	    
 	    openMenuItem.setOnAction(actionEvent -> {	    
 	    	

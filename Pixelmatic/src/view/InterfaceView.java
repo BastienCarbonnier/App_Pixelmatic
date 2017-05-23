@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Image;
 import java.io.File;
+import java.util.Optional;
+
 import controller.WorkArea;
 import controller.IOController;
 import javafx.geometry.Pos;
@@ -9,6 +11,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Menu;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuBar;
@@ -245,10 +249,21 @@ public class InterfaceView {
     }
     
     public static String showSaveMessage(){
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+    	alert.setTitle("Image courante non sauvegardé");
+    	alert.setHeaderText("L'image courante n'a pas été sauvegardé souhaitez vous l'enregistrer ?");
+    	alert.setContentText("");
+
+    	ButtonType buttonTypeOne = new ButtonType("Oui");
+    	ButtonType buttonTypeTwo = new ButtonType("Non");
+    	ButtonType buttonTypeCancel = new ButtonType("Annuler", ButtonData.CANCEL_CLOSE);
+
+    	alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
+
+    	Optional<ButtonType> result = alert.showAndWait();
     	
-    	return "";
-    	}
-       
+    	return result.get().getText(); 
+    }     
     
 	
 }

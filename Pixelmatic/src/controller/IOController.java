@@ -42,20 +42,31 @@ public class IOController {
 			InterfaceView.showErrorMessage("Aucune image n'est en train d'être modifié");
 	}
 	
+	/*
 	public static void saveExit() throws IOException {
 		String res=InterfaceView.showSaveMessage();
-		if(res=="Oui") 
+		if(res.equals("Oui")) 
 			{IOFile.save(WorkArea.getCurrentImagePath());}
-		if(res=="Non" || res=="Oui")
+		if(res.equals("Non") || res.equals("Oui"))
 			{exit();}
 		return;
 					
-	}
-	public static void exit(){
+	}*/
+	public static void exit() throws IOException{
+		
 		if(WorkArea.getCurrentImagePath()!=null) {
-			File current=new File(WorkArea.getCurrentImagePath());
-			WorkArea.setCurrentImagePath(null);
-			current.delete();
+			
+			String res=InterfaceView.showSaveMessage();
+			
+			if(res.equals("Oui")) 
+				IOFile.save(WorkArea.getCurrentImagePath());
+			else if(res.equals("Non")){
+				File current=new File(WorkArea.getCurrentImagePath());
+				WorkArea.setCurrentImagePath(null);
+				current.delete();
+			}
+			else
+				return;
 		}
 		Platform.exit();
 	}
