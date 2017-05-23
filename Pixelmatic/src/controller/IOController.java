@@ -41,6 +41,15 @@ public class IOController {
 		else
 			InterfaceView.showErrorMessage("Aucune image n'est en train d'être modifié");
 	}
+	public static void saveExit() throws IOException {
+		String res=InterfaceView.showSaveMessage();
+		if(res=="Oui") 
+			{IOFile.save(WorkArea.getCurrentImagePath());}
+		if(res=="Non" || res=="Oui")
+			{exit();}
+		return;
+					
+	}
 	public static void exit(){
 		/*
 		if(WorkArea.getBaseImagePath()!=WorkArea.getCurrentImagePath()) {

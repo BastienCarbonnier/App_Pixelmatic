@@ -23,8 +23,36 @@ public class ColorEffects{
         g.dispose();
         ImageIO.write(imagedst, "PNG", new File(imagePath));
 	}
-	public static void test(String imagePath) throws IOException{
-	
+	public static void test(String imagePath, int intensity) throws IOException{
+		BufferedImage img = null;
+	    File f = null;
+	    //read image
+	    
+	    f = new File(imagePath);
+	    img = ImageIO.read(f);
+	    
+	    //get image width and height
+	    int width = img.getWidth();
+	    int height = img.getHeight();
+	    //convert to negative
+	    for(int y = 0; y < height; y++){
+	      for(int x = 0; x < width; x++){
+	        int p = img.getRGB(x,y);
+	        int a = (p>>24)&0XFF; 
+	        int r = (p>>16)&0xFF;
+	        int g = (p>>8)&0xFF;
+	        int b = (p&0xff);
+	        if(a+intensity>255) a=255; else {a=a+intensity;}
+	        if(r+intensity>255) r=255; else {r=r+intensity;}
+	        if(g+intensity>255) g=255; else {g=g+intensity;}
+	        if(b+intensity>255) b=255; else {b=b+intensity;}
+	        p = (a<<24) | (r<<16) | (g<<8) | b;
+	        img.setRGB(x, y, p);
+	      }
+	    }
+	    //write image
+	    f = new File(imagePath);
+	    ImageIO.write(img, "PNG", f); 
 	}
 	public static void applySepiaEffect(String imagePath) throws IOException{
 		BufferedImage img = null;

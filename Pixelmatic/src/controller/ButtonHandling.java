@@ -170,7 +170,7 @@ public class ButtonHandling {
 		
 		copyImageWithRightPath();
 		
-		ColorEffects.test(WorkArea.getCurrentImagePath());
+		ColorEffects.test(WorkArea.getCurrentImagePath(), 10);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
