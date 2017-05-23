@@ -244,7 +244,7 @@ public class InterfaceView {
 	    alert.showAndWait();
     }
     
-    public static String showSaveExitDialog(){
+    public static String showSaveMessage(){
     	
     	return "";
     	}
