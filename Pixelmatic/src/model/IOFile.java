@@ -72,7 +72,7 @@ public class IOFile {
 
 	public static void openBrowser() {
 
-		        String url = "test.html";
+		        String url = "http://infolimon.iutmontp.univ-montp2.fr/~carbonnierb/web-as-bastienc/trunk/";
 
 		        if(Desktop.getDesktop().isSupported(Action.BROWSE)){
 		            Desktop desktop = Desktop.getDesktop();
