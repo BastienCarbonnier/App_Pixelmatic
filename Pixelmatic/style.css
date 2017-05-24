@@ -1,0 +1,394 @@
+.image{
+
+position: 
+top: .05px; 
+left: 8px; 
+}
+
+.menus
+{
+	color:blue;
+}
+
+
+p
+{
+	color:blue; /*OU méthode hexadécimal #000000 pour noir  #FFFFFF pour blanc   en 6 chiffres*/
+}               /*OU RGB red green blue  comme avec la notation hexadécimal pour choisir une couleur on doit définir une quantité de ROUGE GREEN BLUE   color:(red, green, bleu*/
+                /*www.colorpicker.com ou extension colorZilla pour google ou colorPicker pour firefox*/
+h1
+{
+
+	color:red;
+}
+
+em
+{
+	color:yellow;
+}                   /* Commentaire */
+
+.introduction
+{
+	color:green;
+}
+
+.intro
+{
+	color:skyblue;
+}
+
+.bal
+{
+    color:red;
+}
+
+/*#logo      pour id
+{
+	color:red;
+}
+
+*/
+.salutations
+{
+	color:red;
+
+}
+/*FORMATAGE   taille absolue / Taille relative             à privilegier em*/ 
+/*---------------------------------------------------------------------------------------------------------------------*/
+p
+{
+	font-size:2ex;   /*Valeur absolue, paragraphe de 14 pixels*/
+}
+
+h1
+{
+	font-size:2em;   /*Titres de 40 pixels   aussi mm ou cm*/
+}
+
+/* xx-small, x-small, small, medium, large, x-large, ww-large  */
+
+/* pixels, mm, cm  */
+
+/*   em /ex / % /      */ 
+
+
+/*LA POLICE    pour que la police s'affiche correctement il faut que tous les internautes l'aient, sinon le navigateur prend une police par*/ 
+/*---------------------------------------------------------------------------------------------------------------------*/
+p
+{
+	font-family:georgia;  /*serif  police par default*/
+}
+
+
+/* polices qui fonctionnent bien sur la plupart de navigateurs avec des "" s'il y a des espaces dans le nom de la police 
+
+Arial ;
+Arial Black ;
+Comic Sans MS ;
+Courier New ;
+Georgia ;
+Impact ;
+Times New Roman ;
+Trebuchet MS ;
+Verdana.
+*/
+
+/*Avec css3 maintenant on peut utiliser n'importe quelle police sur son site */
+
+/*En css pour définir une nouvelle police on doit la déclarer comme ceci*/
+
+@font-face { /* Définition d'une nouvelle police nommée LearningCurveProRegular */
+    font-family: 'AlexBrush-Regular';
+    src: url('AlexBrush-Regular.eot');
+    src: url('AlexBrush-Regular.eot?#iefix') format('embedded-opentype'),
+         url('AlexBrush-Regular.woff') format('woff'),
+         url('AlexBrush-Regular.ttf') format('truetype'), /**/
+         url('AlexBrush-Regular.svg#KaushanScript-Regular') format('svg');
+}
+
+h1 /* Utilisation de la police qu'on vient de définir sur les titres */
+{
+    font-family: "AlexBrush-Regular", Arial, serif;
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*Pour définir la FORME DU TEXTE  3 valeurs:italic, oblique, normal*/
+
+p
+{
+	font-style:italic;
+
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*LA MISE EN GRAS  mettre en "negrita"   bold en gras, normal  qui est defaut*/
+
+h2
+{
+	color:blue;
+	font-weight:bold;
+}
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/* text-decoration elle permet de SURLIGNE LE TEXTE entre autres: underline/ line-through /overline(ligne au dessus) / blink(clignotant)/ none (normal) */
+
+p
+{
+	text-decoration: none;
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*L'ALIGNEMENT        float qui peut prendre 2 valeurs left right   permet de centrer(center) /a gauche(left)/ à droite(right)/ et justifié(justify) sans laisser d'espace à la fin des lignes*/
+
+h1
+{
+	text-align:center;
+}
+p
+{
+	text-align:justify;
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*LES FLOTTANTS    faire flotter un element autour du texte    image flottante entourée du texte*/
+.imageflottante
+{
+	float:left;
+
+}
+
+/*clear      sert à arreter le flottant pour dire que le texte doit aller en dessous du flottant   left   right   both*/
+.dessous
+{
+	clear:left;
+
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*COULEUR DE FOND    comme avec couleur, avec la méthode normal, hexadecimal ou RGB*/
+/*On travaille dans la valise body c'est à dire dans toute la page*/
+/*
+body
+{
+	background-color:black; /*Le fond de la page sera noir
+
+}
+*/
+mark
+{
+	background-color: green;
+	color: white;
+}
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*background-image   on doit renseigner l'url(nom_image.png)  METTRE UNE IMAGE DE FOND*/
+/*body
+{
+	/*
+	background: url(../paysage.jpg) fixed;
+	background-image: url(../soleil2.jpg);
+    background-attachment: fixed;      background-attachement   permet de fixer le FOND    deux valeurs: fixed(l'image de fond reste fixe)   et scroll(l'image de fond défile avec le texte) (par defaut)
+                                       fixed: l'image de fond reste fixe, scroll: l'image de fond défile avec le texte
+    background-repeat:no-repeat;       Repetition du fond no-repeat: le fond ne sera pas repeté  repeat-x le fond se repete uniquement sur la premiere ligne horizontalement
+                                       repeat-y le fond se repete uniquement sur la premiere colonne verticalement
+                                       repeat le fond sera repeté en mosaique( par defaut)
+    background-position:top right;     POSITION DU FOND px px ou top  bottom left center right     les mots peuvent etre combinés par exemple top right
+    background-size:8cm 8cm;           em px mm ou cm
+                                       SUPER PROPRIETE background peut combiner plusieurs propriétés vues précédemment
+     */
+
+   /* background: url(../soleil2.jpg ) fixed no-repeat top right, url("../texture4.jpg") fixed;    /*RESUME DANS UNE SEULE LIGNE les attibuts peuvent etre dans n'importe quel ordre
+                                                                    plusieurs images de fond à un element on separe les déclarations par une virgule
+}*/                                      
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*OPACITY pour gérer la opacité */
+/*
+ p
+ {
+ 	background-color: white;
+ 	color: green;
+    opacity:.5;                    OPACITY pour gérer la opacité de 0 à 1    0.5 50 pour cent tout le contenu de p prend l'opacité
+ }
+ */
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*Si on veut rendre transparent juste le fond de la page il faut utiliser plutot la notation RGBa*/
+/*
+body
+{
+	background-color: rgba(52,52,52, 0.7);   /*juste le fond  Fond rouge à moitié transparent
+}
+*/
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*BORDURES STANDARD: apparence de bordures: border-width   border-color   border-style  on peut modifier la largeur couleur le type de bordure*/
+/*la largeur: largeur de la bordure, mettez la valeur en pixels (comme 2px);  couleur: la couleur de la bordure: soit avec nom de couleur, soit hexadecimal, soit rgb*/
+/*Le type de bordure: on a le choix: none, solid (très simple), dotted (pointillés), dashed (tired), double(double bordure)*, groove (en relief), ridge (autre effet relief)*/
+/*inset (effet 3d golbal enfoncé), outset(ellef 3d surelevé)      color width style */
+
+/*EXEMPLES*/
+h1 
+{
+	border: 5px  red dotted;
+	border-radius: 50px;  /*On peut aussi préciser la bordure de chaque coind avec plusieurs border radiues 50px 30px 25px 55px.....50px/30px bordure eliptique*/
+	border-top: solid;
+	border-top-color: green;
+	border-left: 2px solid white;
+	background-color: white;
+	width:350px; /*IMPORTANT ancho del fondo*/
+    min-width:400px;
+    width:350px; /*WIDTH et MARGIN:AUTO; permettent de centrer un texte*/
+    margin:auto; 
+    /*margin-left:800px; IMPORTANT decalage par rapport à la gauche*/
+}
+strong
+{
+border
+	border: 5px  red dotted;
+	border-radius: 50px; 
+	border-top: solid;
+	border-top-color: green;
+	border-left: 2px solid white;
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*LES OMBRES     2 types box-shadow: ombres de boite   et text-shadow: ombre de texte*/
+h1
+{
+	box-shadow:6px 6px 8px red;/*S'applique à tout le bloc prend 4 valeurs dans l'ordre suivant decalage horizontalde l'ombre, vretical, adoucissement degradé, couleur ombre*/
+    
+}
+
+h1
+{
+	text-shadow:8px 6px 8px green;/*pareil que pour box shadow*/
+}
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*CREATION D'APPARENCES DYNAMIQUES  pseudo-formats CSS  au SURVOL (hover), LORS d'UN CLICK, LORS DU FOCUS, lorsque le LIEN A ETE CONSULTE*/
+
+a /*Liens par défaut (non survolés)*/       /*INFORMATION que l'on rajoute après le nom de la balise ou de la class hover( survoler) quand la souris est sur le lien*/
+{
+   text-decoration: none;
+   color: red;
+   font-style: italic;
+}
+a:hover 
+{
+   text-decoration: underline;
+   color: green;
+}
+
+/*Meme si on utilise cela souvent sur les liens , on peut modifier l'apparence de n'importe quel element...On peut par exemple modifier l'apparence de 
+paragraphes lorsque on pointe dessus*/
+p:hover 
+{
+   text-decoration: none;
+   color: green;
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*AU CLICK :active permet d'appliquer un style particulier au moment d'un click.En pratique il n'est utilisé que sur les liens 
+ le lien gardera cette apparence très peut de temps, en fait le changement inervient lorsque le bouton de la souris est enfoncé, c'est n'est pas tjrs bien visible
+ ON PEUT par exemple changer la couleur de fond du lien lorsqu'on clique dessus */
+
+a:active /*quand le visiteur clique sur le lien*/
+{
+   color: #FFCC66;
+   /*ou avec background-color:   pour le fond*/
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*FOCUS applique un style lorsque l'élement est sélectionné...une fois qu'on a cliqué le lien reste sélectionné (petite bordure en pointillé autour*/
+
+a:focus /*quand le visiteur selectionne le lien*/
+{
+   background-color: skyblue;
+  
+}
+/*---------------------------------------------------------------------------------------------------------------------*/
+/*visited par defaut le navigateur met le lien visité en violet*/
+/*
+a:visited quand le visiteur selectionne le lien
+{
+   color: #AAA;
+  
+}
+*/
+
+
+
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/*SELECTEUR UNIVERSEL * selectionne toutes les balises sans exception
+
+*
+{
+
+}
+
+*/
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/* A B: selectionne une balise contenue dans une autre, dans toutes les h3 les em auront les attributs indiqués
+
+h3 em      sans virgule
+{
+
+}
+
+*/
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/* <h3>titre avec <em>texte important</em></h3>   */
+
+
+/* A+B: Une balise qui en suit une autre
+
+h3+p   selectionne la première balise <p> située après un titre <h3>
+exemple:
+
+<h3>titre</h3>
+
+<p>paragraphe</p>
+
+*/
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/* a[title]        une valise qui possède un attribut     selectionne tous les liens <a> qui possedent un attribut title   
+
+a[title]   
+{
+	
+}
+
+exemple:
+
+<a href="httt://site.com" title="infobulle">
+
+*/
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/*
+A[attributs="valeur"]      une balise un attribut et une valeur exacte           idem, mais l'attribut doit eavoir exactement par valeur "clickez ici"
+
+a[title="cliquez ici"]
+{
+	
+}
+
+*/
+
+/*---------------------------------------------------------------------------------------------------------------------*/
+
+/*
+A[attribut*="valeur"]       una balise un attribut et une valeur                 idem, l'attribut doit cette fois contenir dans la valeur le mot "ici" (peu importe sa position)
+
+a[title*="ici"] 
+{
+	
+}
+
+ex:
+<a href="httt://site.com" title="quelque part par ici">
+
+*/
