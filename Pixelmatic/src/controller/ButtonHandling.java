@@ -73,9 +73,25 @@ public class ButtonHandling {
 	}
 	
 	public static void useFlouIncrementalEffect(int strength) throws IOException{
-		
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+
 		copyImageWithRightPath();
 		FlouEffects.applyFlouIncrementalEffect(WorkArea.getCurrentImagePath(),strength);
+		
+		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+	}
+	
+	public static void useLuminosityIncrementalEffect(int strength) throws IOException{
+		if (WorkArea.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+
+		copyImageWithRightPath();
+		ColorEffects.applyLuminosityEffect(WorkArea.getCurrentImagePath(),strength);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}
@@ -170,7 +186,7 @@ public class ButtonHandling {
 		
 		copyImageWithRightPath();
 		
-		ColorEffects.test(WorkArea.getCurrentImagePath(), 10);
+		//ColorEffects.test(WorkArea.getCurrentImagePath(), 10);
 		
 		InterfaceView.showImage(WorkArea.getCurrentImagePath());
 	}

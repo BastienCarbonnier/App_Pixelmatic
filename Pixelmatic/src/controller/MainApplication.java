@@ -10,8 +10,7 @@ public class MainApplication extends Application {
 	
 	public void start(Stage primaryStage) {
 		
-		@SuppressWarnings("unused")
-		WorkArea currentArea=new WorkArea();
+		
 	    InterfaceView app=new InterfaceView(primaryStage);
 	  
 	    app.show();

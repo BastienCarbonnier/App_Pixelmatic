@@ -23,7 +23,7 @@ public class ColorEffects{
         g.dispose();
         ImageIO.write(imagedst, "PNG", new File(imagePath));
 	}
-	public static void test(String imagePath, int intensity) throws IOException{
+	public static void applyLuminosityEffect(String imagePath, int intensity) throws IOException{
 		BufferedImage img = null;
 	    File f = null;
 	    //read image

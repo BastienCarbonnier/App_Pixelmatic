@@ -81,6 +81,39 @@ public class ToolbarButtonView {
 				}
 			});
 	        
+	        Button itemEffectLuminosite = new Button("Luminosite");
+			
+		    
+	        itemEffectLuminosite.setOnAction(actionEvent -> {
+	        	
+	        	
+	        	int strength;
+	        	List<Integer> choices = new ArrayList<>();
+	        	choices.add(1);
+	        	choices.add(2);
+	        	choices.add(3);
+	        	choices.add(5);
+	        	choices.add(10);
+	        	ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+	        	dialog.setTitle("Niveau de Luminosite");
+	        	dialog.setHeaderText(null);
+	        	dialog.setContentText("Choisissez le niveau de luminosite que vous désirez :");
+
+	        	Optional<Integer> result = dialog.showAndWait();
+	        	
+	        	if (result.isPresent()){
+	        	    strength= result.get();
+	        	    
+	        	}else 
+	        		strength=0;
+	        	
+				try {
+					ButtonHandling.useLuminosityIncrementalEffect(strength);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
 	        MenuItem itemEffect4 = new MenuItem("Trouble");
 			
 		    
@@ -215,6 +248,7 @@ public class ToolbarButtonView {
 		    	    menuButtonContour,
 		    	    //menuButtonFlou,
 		    	    itemEffectFlou1,
+		    	    itemEffectLuminosite,
 		    	    buttonTestDylan,
 		    	    buttonTestJorge
 		    	     
@@ -225,6 +259,7 @@ public class ToolbarButtonView {
 			menuButtonColor.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonContour.setPrefWidth(toolBar.getPrefWidth());
 			itemEffectFlou1.setPrefWidth(toolBar.getPrefWidth());
+			itemEffectLuminosite.setPrefWidth(toolBar.getPrefWidth());
 			buttonTestDylan.setPrefWidth(toolBar.getPrefWidth());
 			buttonTestJorge.setPrefWidth(toolBar.getPrefWidth());
 		
