@@ -28,17 +28,4 @@ public class FlouEffects {
 		ImageIO.write(nouvelleImage, "PNG",new File(imagePath));
 	}
 	
-	public static void applyBlurEffect(String imagePath) throws IOException{
-		
-		float[ ] matrice_blur = { 
-			    -1f, -1f, -1f, 
-			    -1f, 8f, -1f, 
-			    -1f, -1f, -1f 
-			}; 
-		BufferedImage img = ImageIO.read(new File(imagePath));
-		BufferedImageOp op = new ConvolveOp(new Kernel(3,3,matrice_blur)); 
-		BufferedImage nouvelleImage = op.filter(img, null);
-		ImageIO.write(nouvelleImage, "PNG",new File(imagePath));
-		
-	}
 }
