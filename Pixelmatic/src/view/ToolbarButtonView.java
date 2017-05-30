@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import controller.ButtonHandling;
+import controller.ButtonEffectHandling;
 import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Button;
@@ -28,7 +28,7 @@ public class ToolbarButtonView {
 		
 		    buttonNoneEffect.setOnAction(actionEvent -> {
 				try {
-					ButtonHandling.showBaseImage();
+					ButtonEffectHandling.showBaseImage();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -40,7 +40,7 @@ public class ToolbarButtonView {
 		    
 		    itemEffectBlackWhite.setOnAction(actionEvent -> {
 				try {
-					ButtonHandling.useBlackAndWhiteEffect();
+					ButtonEffectHandling.useBlackAndWhiteEffect();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -74,7 +74,7 @@ public class ToolbarButtonView {
 	        		strength=0;
 	        	
 				try {
-					ButtonHandling.useFlouIncrementalEffect(strength);
+					ButtonEffectHandling.useFlouIncrementalEffect(strength);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -108,23 +108,13 @@ public class ToolbarButtonView {
 	        		strength=0;
 	        	
 				try {
-					ButtonHandling.useLuminosityIncrementalEffect(strength);
+					ButtonEffectHandling.useLuminosityIncrementalEffect(strength);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			});
-	        MenuItem itemEffect4 = new MenuItem("Trouble");
-			
-		    
-	        itemEffect4.setOnAction(actionEvent -> {
-				try {
-					ButtonHandling.useBlurEffect();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			});
+	        
 	        
 	        MenuItem itemEffectSepia = new MenuItem("Sepia");
 			
@@ -133,7 +123,7 @@ public class ToolbarButtonView {
 	        itemEffectSepia.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.useSepiaEffect();
+						ButtonEffectHandling.useSepiaEffect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -147,7 +137,7 @@ public class ToolbarButtonView {
 	        itemEffectNegatif.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.useNegativeEffect();
+						ButtonEffectHandling.useNegativeEffect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -160,7 +150,7 @@ public class ToolbarButtonView {
 	        itemEffectAccentuation.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.useAccentuationEffect();
+						ButtonEffectHandling.useAccentuationEffect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -174,7 +164,7 @@ public class ToolbarButtonView {
 	        itemEffectEstampage.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.useEstampageEffect();
+						ButtonEffectHandling.useEstampageEffect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -187,7 +177,7 @@ public class ToolbarButtonView {
 	        itemEffectPosterisation.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.usePosterizeEffect();
+						ButtonEffectHandling.usePosterizeEffect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -201,7 +191,7 @@ public class ToolbarButtonView {
 	        buttonTestDylan.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.testDylan();
+						ButtonEffectHandling.testDylan();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -215,7 +205,7 @@ public class ToolbarButtonView {
 	        buttonTestJorge.setOnAction(actionEvent -> {
 				
 					try {
-						ButtonHandling.testJorge();
+						ButtonEffectHandling.testJorge();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -236,17 +226,11 @@ public class ToolbarButtonView {
 		    	     itemEffectAccentuation,
 		    	     itemEffectEstampage
 	        		);
-	        /*
-	        MenuButton menuButtonFlou = new MenuButton("Flou");
-	        menuButtonFlou.getItems().addAll(
-		    	     itemEffectFlou1
-		    	     //itemEffect4
-	        		);*/
+	        
 			toolBar = new ToolBar(
 					buttonNoneEffect,
 		    	    menuButtonColor,
 		    	    menuButtonContour,
-		    	    //menuButtonFlou,
 		    	    itemEffectFlou1,
 		    	    itemEffectLuminosite,
 		    	    buttonTestDylan,

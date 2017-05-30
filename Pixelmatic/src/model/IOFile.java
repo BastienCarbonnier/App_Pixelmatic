@@ -6,7 +6,6 @@ import java.awt.Desktop.Action;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import controller.WorkArea;
 import java.net.*;
 import java.nio.file.*;
 //
@@ -25,24 +24,24 @@ public class IOFile {
 	public static String selectImage(File selectedFile){
 		if (selectedFile==null)
 			return null;
-		WorkArea.setBaseImagePath(selectedFile.getPath());
+		WorkingImage.setBaseImagePath(selectedFile.getPath());
 		return selectedFile.getPath();
 		
 	}
 
 	public static String save(String ImagePath) throws IOException {
-		String dest=WorkArea.getBaseImagePath();
+		String dest=WorkingImage.getBaseImagePath();
 		System.out.println("source :"+ImagePath+" destination :"+dest);
 		askcopy(ImagePath, dest);
 		if (ImagePath!=dest)
 			new File(ImagePath).delete();
-		WorkArea.setCurrentImagePath(dest);
+		WorkingImage.setCurrentImagePath(dest);
 		return ImagePath;
 		
 	}
 	
 	public static String saveAs(String ImagePath) throws IOException{
-			String filename=new File(WorkArea.getBaseImagePath()).getName();
+			String filename=new File(WorkingImage.getBaseImagePath()).getName();
 			String[] nom=filename.split("\\.");
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save As..");
@@ -50,7 +49,7 @@ public class IOFile {
 			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent())); //permet d'ouvrir directement dans le dossier de l'image source
 			File selectedFile = fileChooser.showSaveDialog(null);		//fenetre de sélection
 			if(selectedFile==null)
-				return WorkArea.getCurrentImagePath()!=null?WorkArea.getCurrentImagePath():WorkArea.getBaseImagePath();// retourne l'image courrante si on annule
+				return WorkingImage.getCurrentImagePath()!=null?WorkingImage.getCurrentImagePath():WorkingImage.getBaseImagePath();// retourne l'image courrante si on annule
 			
 			
 			askcopy(ImagePath, selectedFile.getPath()+".png");		

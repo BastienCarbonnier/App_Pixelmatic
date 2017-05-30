@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.IOException;
 
 import controller.IOController;
-import controller.WorkArea;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
@@ -15,6 +14,7 @@ import javafx.scene.control.MenuItem;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import model.IOFile;
+import model.WorkingImage;
 
 public class MenuBarView {
 	

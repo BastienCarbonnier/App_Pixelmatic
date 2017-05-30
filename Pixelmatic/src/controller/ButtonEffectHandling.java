@@ -12,6 +12,7 @@ import model.FlouEffects;
 import model.IOFile;
 import model.ModifyPath;
 import model.StructureEffects;
+import model.WorkingImage;
 import view.InterfaceView;
 
 /**
@@ -24,107 +25,94 @@ import view.InterfaceView;
  *   
  * @author Bastien Carbonnier
  * 
- * @see		WorkArea
+ * @see		WorkingImage
  */
 
-public class ButtonHandling {
+public class ButtonEffectHandling {
 	
 	
 	public static void showBaseImage() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
-		if (WorkArea.getCurrentImagePath()!=null){
-			String baseImagePath=WorkArea.getBaseImagePath();
+		if (WorkingImage.getCurrentImagePath()!=null){
+			String baseImagePath=WorkingImage.getBaseImagePath();
 			
-			String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+			String currentImagePath=ModifyPath.addToPath(WorkingImage.getBaseImagePath(),"_tmp");
 			IOFile.askcopy(baseImagePath,currentImagePath);
-			WorkArea.setCurrentImagePath(currentImagePath);
+			WorkingImage.setCurrentImagePath(currentImagePath);
 		}
-		InterfaceView.showImage(WorkArea.getBaseImagePath());
+		InterfaceView.showImage(WorkingImage.getBaseImagePath());
 	}
 	
 	public static void copyImageWithRightPath() throws IOException{
 		
-		if (WorkArea.getCurrentImagePath()==null){
-			String baseImagePath=WorkArea.getBaseImagePath();
+		if (WorkingImage.getCurrentImagePath()==null){
+			String baseImagePath=WorkingImage.getBaseImagePath();
 			
-			String currentImagePath=ModifyPath.addToPath(WorkArea.getBaseImagePath(),"_tmp");
+			String currentImagePath=ModifyPath.addToPath(WorkingImage.getBaseImagePath(),"_tmp");
 			IOFile.askcopy(baseImagePath,currentImagePath);
 			
-			WorkArea.setCurrentImagePath(currentImagePath);
+			WorkingImage.setCurrentImagePath(currentImagePath);
 		}
 	}
 	
 	public static void useBlackAndWhiteEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		copyImageWithRightPath();
-		ColorEffects.applyBlackAndWhiteEffect(WorkArea.getCurrentImagePath());
+		ColorEffects.applyBlackAndWhiteEffect(WorkingImage.getCurrentImagePath());
 		
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	
 	public static void useFlouIncrementalEffect(int strength) throws IOException{
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 
 		copyImageWithRightPath();
-		FlouEffects.applyFlouIncrementalEffect(WorkArea.getCurrentImagePath(),strength);
+		FlouEffects.applyFlouIncrementalEffect(WorkingImage.getCurrentImagePath(),strength);
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	
 	public static void useLuminosityIncrementalEffect(int strength) throws IOException{
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 
 		copyImageWithRightPath();
-		ColorEffects.applyLuminosityEffect(WorkArea.getCurrentImagePath(),strength);
+		ColorEffects.applyLuminosityEffect(WorkingImage.getCurrentImagePath(),strength);
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
-	
-	public static void useBlurEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
-			InterfaceView.showErrorMessage("Choisissez d'abord une image");
-			return;
-		}
-		copyImageWithRightPath();
-		
-		FlouEffects.applyBlurEffect(WorkArea.getCurrentImagePath());
-		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
-	}
-	
 	public static void useSepiaEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
 		copyImageWithRightPath();		
-		ColorEffects.applySepiaEffect(WorkArea.getCurrentImagePath());
+		ColorEffects.applySepiaEffect(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	
 	public static void useNegativeEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
@@ -132,54 +120,54 @@ public class ButtonHandling {
 		copyImageWithRightPath();	
 		
 		
-		ColorEffects.applyNegativeEffect(WorkArea.getCurrentImagePath());
+		ColorEffects.applyNegativeEffect(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	
 	
 	public static void usePosterizeEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		copyImageWithRightPath();	
 				
-		ColorEffects.applyPosterizeEffect(WorkArea.getCurrentImagePath());
+		ColorEffects.applyPosterizeEffect(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	public static void useAccentuationEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
 		copyImageWithRightPath();	
 		
-		ContourEffects.applyAccentuationEffect(WorkArea.getCurrentImagePath());
+		ContourEffects.applyAccentuationEffect(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	
 	public static void useEstampageEffect() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
 		copyImageWithRightPath();	
 		
-		ContourEffects.applyEstampageEffect(WorkArea.getCurrentImagePath());
+		ContourEffects.applyEstampageEffect(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	public static void testDylan() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
@@ -188,19 +176,19 @@ public class ButtonHandling {
 		
 		//ColorEffects.test(WorkArea.getCurrentImagePath(), 10);
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 	public static void testJorge() throws IOException{
 		
-		if (WorkArea.getBaseImagePath()==null){
+		if (WorkingImage.getBaseImagePath()==null){
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
 		
 		copyImageWithRightPath();
 		
-		StructureEffects.test(WorkArea.getCurrentImagePath());
+		StructureEffects.test(WorkingImage.getCurrentImagePath());
 		
-		InterfaceView.showImage(WorkArea.getCurrentImagePath());
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
 }

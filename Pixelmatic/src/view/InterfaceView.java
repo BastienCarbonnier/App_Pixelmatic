@@ -4,7 +4,6 @@ import java.awt.Image;
 import java.io.File;
 import java.util.Optional;
 
-import controller.WorkArea;
 import controller.IOController;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,6 +28,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import model.WorkingImage;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
 import javafx.event.*;
@@ -160,7 +160,7 @@ public class InterfaceView {
 	    // Set OnClick event
 	    buttonFirstSelectImage.setOnAction(actionEvent -> {
 	    	FileChooser fileChooser = new FileChooser(); 
-	    	fileChooser.setInitialFileName(WorkArea.getBaseImagePath());
+	    	fileChooser.setInitialFileName(WorkingImage.getBaseImagePath());
 	        File file = fileChooser.showOpenDialog(null); 
 	        IOController.openImage(file);
 		});

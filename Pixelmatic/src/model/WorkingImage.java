@@ -1,13 +1,13 @@
-package controller;
+package model;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class WorkArea {
+public class WorkingImage {
 	private static String currentImagePath;
 	private static String baseImagePath;
 	
-	public WorkArea(){
+	public WorkingImage(){
 		baseImagePath=null;
 		currentImagePath=null;
 	}
