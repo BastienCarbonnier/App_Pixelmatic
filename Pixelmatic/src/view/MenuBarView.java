@@ -6,15 +6,19 @@ import java.io.File;
 import java.io.IOException;
 
 import controller.IOController;
+import model.WorkingImage;
 import javafx.application.Platform;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import model.IOFile;
-import model.WorkingImage;
 
 public class MenuBarView {
 	
@@ -27,6 +31,7 @@ public class MenuBarView {
 	    Menu editMenu = new Menu("Edition");
 	    Menu helpMenu = new Menu("Aide");
 	    MenuItem exitMenuItem = new MenuItem("Exit");
+	    MenuItem printMenuItem = new MenuItem("Print");
 	    MenuItem openMenuItem = new MenuItem("Open");
 	    MenuItem saveMenuItem = new MenuItem("Save");
 	    MenuItem saveAsMenuItem = new MenuItem("SaveAs..");
@@ -35,16 +40,14 @@ public class MenuBarView {
 	    
 	        
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
-	    fileMenu.getItems().addAll(openMenuItem, saveMenuItem, saveAsMenuItem);
+	    fileMenu.getItems().addAll(openMenuItem, saveMenuItem, saveAsMenuItem, printMenuItem);
 	    helpMenu.getItems().addAll(getHelpItem);
-	    exitMenuItem.setOnAction(actionEvent -> {
-			try {
-				IOController.exit();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		});
+	    exitMenuItem.setOnAction(actionEvent -> IOController.exit());
+	    
+	    printMenuItem.setOnAction(actionEvent -> {	    
+	    	IOController.print(); //appeler la fonction imprimer
+
+	});
 	    
 	    openMenuItem.setOnAction(actionEvent -> {	    
 	    	

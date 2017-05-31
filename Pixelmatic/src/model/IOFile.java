@@ -6,6 +6,7 @@ import java.awt.Desktop.Action;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import model.WorkingImage;
 import java.net.*;
 import java.nio.file.*;
 //
@@ -24,46 +25,43 @@ public class IOFile {
 	public static String selectImage(File selectedFile){
 		if (selectedFile==null)
 			return null;
-		WorkingImage.setBaseImagePath(selectedFile.getPath());
+		model.WorkingImage.setBaseImagePath(selectedFile.getPath());
 		return selectedFile.getPath();
 		
 	}
 
 	public static String save(String ImagePath) throws IOException {
-		String dest=WorkingImage.getBaseImagePath();
-		System.out.println("source :"+ImagePath+" destination :"+dest);
+		String dest=model.WorkingImage.getBaseImagePath();
 		askcopy(ImagePath, dest);
 		if (ImagePath!=dest)
 			new File(ImagePath).delete();
-		WorkingImage.setCurrentImagePath(dest);
+		model.WorkingImage.setCurrentImagePath(dest);
 		return ImagePath;
 		
 	}
 	
 	public static String saveAs(String ImagePath) throws IOException{
-			String filename=new File(WorkingImage.getBaseImagePath()).getName();
+			String filename=new File(model.WorkingImage.getBaseImagePath()).getName();
 			String[] nom=filename.split("\\.");
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save As..");
 			fileChooser.setInitialFileName(nom[0]);
-			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent())); //permet d'ouvrir directement dans le dossier de l'image source
-			File selectedFile = fileChooser.showSaveDialog(null);		//fenetre de sélection
+			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent()));											 //permet d'ouvrir directement dans le dossier de l'image source
+			File selectedFile = fileChooser.showSaveDialog(null);																	//fenetre de sélection 
 			if(selectedFile==null)
-				return WorkingImage.getCurrentImagePath()!=null?WorkingImage.getCurrentImagePath():WorkingImage.getBaseImagePath();// retourne l'image courrante si on annule
-			
-			
+				return model.WorkingImage.getCurrentImagePath()!=null?model.WorkingImage.getCurrentImagePath():model.WorkingImage.getBaseImagePath();				// retourne l'image courrante si on annule
 			askcopy(ImagePath, selectedFile.getPath()+".png");		
-			//if ()
+			
 			return selectedFile.getPath();
 		
 	}
 
 	
     public static void askcopy(String start, String dest) throws IOException{
-        Path source= Paths.get(start); //création des variables fichier
+        Path source= Paths.get(start); 
         Path destination=Paths.get(dest);
-        Files.copy(source, destination,REPLACE_EXISTING); //copie
-        if((new File(start).length())!=(new File(dest).length())) { // on teste le bon déroulement de la copie
+        Files.copy(source, destination,REPLACE_EXISTING); 
+        if((new File(start).length())!=(new File(dest).length())) { 
         	InterfaceView.showErrorMessage("Il y eu une erreur lors de la copie, veuillez réessayer");
         }
     }
@@ -71,7 +69,7 @@ public class IOFile {
 
 	public static void openBrowser() {
 
-		        String url = "http://infolimon.iutmontp.univ-montp2.fr/~carrilloj/web-as-carrilloj/trunk/";
+		        String url = "URLPageDeTest.html";
 
 		        if(Desktop.getDesktop().isSupported(Action.BROWSE)){
 		            Desktop desktop = Desktop.getDesktop();
