@@ -42,12 +42,13 @@ public class MenuBarView {
 	    pixelmaticMenu.getItems().addAll(exitMenuItem);
 	    fileMenu.getItems().addAll(openMenuItem, saveMenuItem, saveAsMenuItem, printMenuItem);
 	    helpMenu.getItems().addAll(getHelpItem);
+	    
 	    exitMenuItem.setOnAction(actionEvent -> IOController.exit());
 	    
 	    printMenuItem.setOnAction(actionEvent -> {	    
 	    	IOController.print(); //appeler la fonction imprimer
 
-	});
+	    });
 	    
 	    openMenuItem.setOnAction(actionEvent -> {	    
 	    	
