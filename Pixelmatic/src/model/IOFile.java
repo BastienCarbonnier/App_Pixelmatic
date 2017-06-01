@@ -58,7 +58,7 @@ public class IOFile {
 			new File(WorkingImage.getCurrentImagePath()).delete();
 			model.WorkingImage.setCurrentImagePath(null);
 			IOController.openImage(new File(selectedFile.getPath()+".png"));
-			return selectedFile.getPath();
+		 	return selectedFile.getPath();
 		
 	}
 
