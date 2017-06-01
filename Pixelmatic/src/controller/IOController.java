@@ -47,7 +47,7 @@ public class IOController {
 	public static void saveExit() throws IOException {
 		String res=InterfaceView.showSaveMessage();
 		if(res=="Oui") 
-			{IOFile.save(model.WorkingImage.getCurrentImagePath());}
+			{IOFile.saveAs(model.WorkingImage.getCurrentImagePath());}
 		if(res=="Non" || res=="Oui")
 			{exit();}
 		return;				
@@ -81,8 +81,14 @@ public class IOController {
 
 		if(model.WorkingImage.getCurrentImagePath()!=null) {
 			File current=new File(model.WorkingImage.getCurrentImagePath());
-			model.WorkingImage.setCurrentImagePath(null);
+			try {
+				saveExit();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			current.delete();
+			model.WorkingImage.setCurrentImagePath(null);
 		}
 		Platform.exit();
 	}

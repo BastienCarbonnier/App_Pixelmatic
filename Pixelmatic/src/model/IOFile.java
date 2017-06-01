@@ -1,6 +1,9 @@
 package model;
 import java.io.*;
 import java.util.*;
+
+import controller.IOController;
+
 import java.awt.Desktop;
 import java.awt.Desktop.Action;
 import java.io.IOException;
@@ -35,7 +38,7 @@ public class IOFile {
 		askcopy(ImagePath, dest);
 		if (ImagePath!=dest)
 			new File(ImagePath).delete();
-		model.WorkingImage.setCurrentImagePath(dest);
+		model.WorkingImage.setCurrentImagePath(null);
 		return ImagePath;
 		
 	}
@@ -52,6 +55,9 @@ public class IOFile {
 				return model.WorkingImage.getCurrentImagePath()!=null?model.WorkingImage.getCurrentImagePath():model.WorkingImage.getBaseImagePath();				// retourne l'image courrante si on annule
 			askcopy(ImagePath, selectedFile.getPath()+".png");		
 			
+			new File(WorkingImage.getCurrentImagePath()).delete();
+			model.WorkingImage.setCurrentImagePath(null);
+			IOController.openImage(new File(selectedFile.getPath()+".png"));
 			return selectedFile.getPath();
 		
 	}
