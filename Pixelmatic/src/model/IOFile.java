@@ -72,7 +72,7 @@ public class IOFile {
 		        String url ="http://infolimon.iutmontp.univ-montp2.fr/~meunierd/web-as-meunierd/Pixelmatic/";
 
 		        if(Desktop.getDesktop().isSupported(Action.BROWSE)){
-		            Desktop desktop =Desktop.getDesktop();
+		            Desktop desktop=Desktop.getDesktop(); 
 		            try {
 		                desktop.browse(new URI(url));
 		            } catch (IOException | URISyntaxException e) {

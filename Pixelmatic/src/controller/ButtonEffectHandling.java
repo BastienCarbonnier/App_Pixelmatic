@@ -183,7 +183,7 @@ public class ButtonEffectHandling {
 public static void use180Effect() throws IOException{
 		
 		if (WorkingImage.getBaseImagePath()==null){
-			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			InterfaceView.showErrorMessage("Choisissez d'abord une image"); 
 			return;
 		}
 		

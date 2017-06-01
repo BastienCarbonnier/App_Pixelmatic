@@ -224,7 +224,7 @@ public class ToolbarButtonView {
 		    
 		    
 		    
-	        Button buttonTestJorge = new Button("Jorge");
+	        Button buttonTestJorge =new Button("Jorge");
 			
 	        
 	        buttonTestJorge.setOnAction(actionEvent -> {

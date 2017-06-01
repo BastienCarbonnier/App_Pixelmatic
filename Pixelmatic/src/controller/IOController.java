@@ -70,7 +70,7 @@ public class IOController {
 		if(job.showPrintDialog(null)) {		
 			boolean success = job.printPage(image);
 				if (success) {
-					job.endJob();
+					job.endJob(); 
 				}
 		}
 

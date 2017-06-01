@@ -32,7 +32,7 @@ public class StructureEffects {
 	    File f = null;
 	    //read image
 	   //* 
-	    f=new File(imagePath);
+	    f=new File(imagePath); 
 	    img = ImageIO.read(f);
 	    BufferedImage imageReversed=ImageIO.read(f);
 	    //get image width and height
