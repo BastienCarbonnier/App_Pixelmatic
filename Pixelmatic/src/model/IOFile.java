@@ -69,7 +69,7 @@ public class IOFile {
 
 	public static void openBrowser() {
 
-		        String url = "URLPageDeTest.html";
+		        String url ="http://infolimon.iutmontp.univ-montp2.fr/~meunierd/web-as-meunierd/Pixelmatic/";
 
 		        if(Desktop.getDesktop().isSupported(Action.BROWSE)){
 		            Desktop desktop = Desktop.getDesktop();

@@ -34,7 +34,7 @@ public class ColorEffects{
 	    //get image width and height
 	    int width = img.getWidth();
 	    int height = img.getHeight();
-	    //convert to negative
+	    																				//convert to negative
 	    for(int y = 0; y < height; y++){
 	      for(int x = 0; x < width; x++){
 	        int p = img.getRGB(x,y);

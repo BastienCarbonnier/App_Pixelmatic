@@ -158,13 +158,43 @@ public class ButtonEffectHandling {
 			InterfaceView.showErrorMessage("Choisissez d'abord une image");
 			return;
 		}
-		
 		copyImageWithRightPath();	
 		
-		ContourEffects.applyEstampageEffect(WorkingImage.getCurrentImagePath());
+		StructureEffects.applyMirrorEffect(WorkingImage.getCurrentImagePath());
 		
 		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
 	}
+		
+	public static void useMirrorEffect() throws IOException{
+		
+		if (WorkingImage.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		copyImageWithRightPath();	
+		
+		StructureEffects.applyMirrorEffect(WorkingImage.getCurrentImagePath());
+		
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
+	}
+	
+	
+public static void use180Effect() throws IOException{
+		
+		if (WorkingImage.getBaseImagePath()==null){
+			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+			return;
+		}
+		
+		copyImageWithRightPath();	
+		
+		StructureEffects.apply180Effect(WorkingImage.getCurrentImagePath());
+		
+		InterfaceView.showImage(WorkingImage.getCurrentImagePath());
+	}
+
+
 	public static void testDylan() throws IOException{
 		
 		if (WorkingImage.getBaseImagePath()==null){

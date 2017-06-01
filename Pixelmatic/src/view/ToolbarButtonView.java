@@ -199,6 +199,31 @@ public class ToolbarButtonView {
 				
 			});
 	        
+	        
+	       MenuItem itemEffectMirror = new MenuItem("Mirroir");
+		    
+		    itemEffectMirror.setOnAction(actionEvent -> {
+				try {
+					ButtonEffectHandling.useMirrorEffect();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+		    
+		       MenuItem itemEffect180 = new MenuItem("180°");
+			    
+			    itemEffect180.setOnAction(actionEvent -> {
+					try {
+						ButtonEffectHandling.use180Effect();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				});
+		    
+		    
+		    
 	        Button buttonTestJorge = new Button("Jorge");
 			
 	        
@@ -212,6 +237,9 @@ public class ToolbarButtonView {
 					}
 				
 			});
+	        
+	        MenuButton menuButtonStructure=new MenuButton("Structure");
+	        menuButtonStructure.getItems().addAll(itemEffectMirror, itemEffect180);
 	        
 	        MenuButton menuButtonColor = new MenuButton("Couleur");
 	        menuButtonColor.getItems().addAll(
@@ -231,6 +259,7 @@ public class ToolbarButtonView {
 					buttonNoneEffect,
 		    	    menuButtonColor,
 		    	    menuButtonContour,
+		    	    menuButtonStructure,
 		    	    itemEffectFlou1,
 		    	    itemEffectLuminosite,
 		    	    buttonTestDylan,
@@ -242,6 +271,7 @@ public class ToolbarButtonView {
 			buttonNoneEffect.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonColor.setPrefWidth(toolBar.getPrefWidth());
 			menuButtonContour.setPrefWidth(toolBar.getPrefWidth());
+			menuButtonStructure.setPrefWidth(toolBar.getPrefWidth());
 			itemEffectFlou1.setPrefWidth(toolBar.getPrefWidth());
 			itemEffectLuminosite.setPrefWidth(toolBar.getPrefWidth());
 			buttonTestDylan.setPrefWidth(toolBar.getPrefWidth());
