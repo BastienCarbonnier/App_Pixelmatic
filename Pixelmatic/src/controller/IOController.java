@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Window;
 import model.IOFile;
 import view.InterfaceView;
 
@@ -66,8 +67,11 @@ public class IOController {
 			InterfaceView.showErrorMessage("Aucune image sélectionnée");
 			return;
 		}
+		
+
 		PrinterJob job = PrinterJob.createPrinterJob();
-		if(job.showPrintDialog(null)) {		
+		
+		if(job.showPrintDialog(image.getScene().getWindow())) {		
 			boolean success = job.printPage(image);
 				if (success) {
 					job.endJob(); 
