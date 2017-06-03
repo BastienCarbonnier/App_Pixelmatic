@@ -74,10 +74,6 @@ public class ButtonEffectHandling {
 	}
 	
 	public static void useFlouIncrementalEffect(int strength) throws IOException{
-		if (WorkingImage.getBaseImagePath()==null){
-			InterfaceView.showErrorMessage("Choisissez d'abord une image");
-			return;
-		}
 
 		copyImageWithRightPath();
 		FlouEffects.applyFlouIncrementalEffect(WorkingImage.getCurrentImagePath(),strength);

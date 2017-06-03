@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
+import model.WorkingImage;
 import javafx.scene.text.Text;
 
 public class ToolbarButtonView {
@@ -52,33 +53,38 @@ public class ToolbarButtonView {
 		    
 	        itemEffectFlou1.setOnAction(actionEvent -> {
 	        	
-	        	
-	        	int strength;
-	        	List<Integer> choices = new ArrayList<>();
-	        	choices.add(1);
-	        	choices.add(2);
-	        	choices.add(3);
-	        	choices.add(5);
-	        	choices.add(10);
-	        	ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
-	        	dialog.setTitle("Niveau de flou");
-	        	dialog.setHeaderText(null);
-	        	dialog.setContentText("Choisissez le niveau de flou que vous désirez :");
-
-	        	Optional<Integer> result = dialog.showAndWait();
-	        	
-	        	if (result.isPresent()){
-	        	    strength= result.get();
-	        	    
-	        	}else 
-	        		strength=0;
-	        	
-				try {
-					ButtonEffectHandling.useFlouIncrementalEffect(strength);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	        	if (WorkingImage.getBaseImagePath()==null){
+	    			InterfaceView.showErrorMessage("Choisissez d'abord une image");
+	    			
+	    		}
+	        	else {
+		        	int strength;
+		        	List<Integer> choices = new ArrayList<>();
+		        	choices.add(1);
+		        	choices.add(2);
+		        	choices.add(3);
+		        	choices.add(5);
+		        	choices.add(10);
+		        	ChoiceDialog<Integer> dialog = new ChoiceDialog<>(1, choices);
+		        	dialog.setTitle("Niveau de flou");
+		        	dialog.setHeaderText(null);
+		        	dialog.setContentText("Choisissez le niveau de flou que vous désirez :");
+		        	
+		        	Optional<Integer> result = dialog.showAndWait();
+		        	
+		        	if (result.isPresent()){
+		        	    strength= result.get();
+		        	    
+		        	}else 
+		        		strength=0;
+		        	
+					try {
+						ButtonEffectHandling.useFlouIncrementalEffect(strength);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+	        	}
 			});
 	        
 	        Button itemEffectLuminosite = new Button("Luminosite");

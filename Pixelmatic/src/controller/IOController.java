@@ -17,13 +17,19 @@ import view.InterfaceView;
 public class IOController {
 	public static void openImage(File selectedFile){
 		if(model.WorkingImage.getCurrentImagePath()!=null) {
-			File current=new File(model.WorkingImage.getCurrentImagePath());
-			model.WorkingImage.setCurrentImagePath(null);
-			current.delete();
+			boolean exit=true;
+			try {
+				exit=saveExit();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if(!exit)
+				return;
 		}
 		String name=IOFile.selectImage(selectedFile);	
 		if(name==null){
-			InterfaceView.showInfoMessage("Aucune image de selectionné");
+			InterfaceView.showInfoMessage("Aucune image selectionnée");
 			return;
 		}
 		model.WorkingImage.setBaseImagePath(name);
@@ -45,13 +51,18 @@ public class IOController {
 	}
 	
 	
-	public static void saveExit() throws IOException {
+	public static boolean saveExit() throws IOException {
 		String res=InterfaceView.showSaveMessage();
 		if(res=="Oui") 
 			{IOFile.saveAs(model.WorkingImage.getCurrentImagePath());}
-		if(res=="Non" || res=="Oui")
-			{exit();}
-		return;				
+		else if (res=="Non"){
+			File current=new File(model.WorkingImage.getCurrentImagePath());
+			current.delete();
+			model.WorkingImage.setCurrentImagePath(null);
+		}
+		else
+			return false;
+		return true;			
 	}
 	
 	
@@ -82,18 +93,18 @@ public class IOController {
 	
 	
 	public static void exit(){
-
+		boolean exit=true;
 		if(model.WorkingImage.getCurrentImagePath()!=null) {
-			File current=new File(model.WorkingImage.getCurrentImagePath());
+			
 			try {
-				saveExit();
+				exit=saveExit();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			current.delete();
-			model.WorkingImage.setCurrentImagePath(null);
 		}
-		Platform.exit();
+		if (exit)
+			Platform.exit();
+		
 	}
 }
