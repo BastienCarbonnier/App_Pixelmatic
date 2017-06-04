@@ -23,7 +23,6 @@ public class ToolbarButtonView {
 	
 		public static ToolBar createToolbar(){
 			
-			ToolBar toolBar;
 			
 			Button buttonNoneEffect = new Button("Non-Modifie");
 		
@@ -261,7 +260,7 @@ public class ToolbarButtonView {
 		    	     itemEffectEstampage
 	        		);
 	        
-			toolBar = new ToolBar(
+			ToolBar toolBar = new ToolBar(
 					buttonNoneEffect,
 		    	    menuButtonColor,
 		    	    menuButtonContour,
@@ -270,7 +269,6 @@ public class ToolbarButtonView {
 		    	    itemEffectLuminosite,
 		    	    buttonTestDylan,
 		    	    buttonTestJorge
-		    	     
 		    	 );
 			toolBar.setOrientation(Orientation.VERTICAL);
 			toolBar.setPrefWidth(100);
