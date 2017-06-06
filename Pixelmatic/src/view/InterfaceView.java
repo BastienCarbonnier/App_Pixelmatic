@@ -1,7 +1,10 @@
 package view;
 
 import java.awt.Image;
+import java.awt.Window;
+import java.awt.event.WindowAdapter;
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
 import controller.IOController;
@@ -28,6 +31,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import model.WorkingImage;
 import javafx.scene.input.*;
 import javafx.scene.text.*;
@@ -99,6 +103,16 @@ public class InterfaceView {
 	
 	public void show(){
 		primaryStage.show();
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	    	public void handle(WindowEvent e) {
+	    		try {
+					IOController.saveExit();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	    	}
+		});
 	}
 	
 	/**
@@ -137,8 +151,9 @@ public class InterfaceView {
 	     * */
 	    
 	    rootLayout.setCenter(createButtonFirstImageSelection());
-	    
+
 	    Scene scene = new Scene(rootLayout);
+	    
 	    primaryStage.setScene(scene);
 	    
 	}
@@ -264,6 +279,12 @@ public class InterfaceView {
     	
     	return result.get().getText(); 
     }     
+    
+    public static Stage getStage() {
+    	return primaryStage;
+    	
+    	
+    }
     
 	
 }

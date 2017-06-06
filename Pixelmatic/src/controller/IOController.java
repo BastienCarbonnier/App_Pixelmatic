@@ -64,7 +64,7 @@ public class IOController {
 			return false;
 		return true;			
 	}
-	
+
 	
 	public static void print() {
 		ImageView image;
@@ -82,7 +82,7 @@ public class IOController {
 
 		PrinterJob job = PrinterJob.createPrinterJob();
 		
-		if(job.showPrintDialog(image.getScene().getWindow())) {		
+		if(job.showPrintDialog(null)) {		
 			boolean success = job.printPage(image);
 				if (success) {
 					job.endJob(); 
@@ -91,7 +91,7 @@ public class IOController {
 
 	}
 	
-	
+
 	public static void exit(){
 		boolean exit=true;
 		if(model.WorkingImage.getCurrentImagePath()!=null) {

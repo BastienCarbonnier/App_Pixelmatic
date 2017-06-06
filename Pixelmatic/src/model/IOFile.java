@@ -55,7 +55,7 @@ public class IOFile {
 				return model.WorkingImage.getCurrentImagePath()!=null?model.WorkingImage.getCurrentImagePath():model.WorkingImage.getBaseImagePath();				// retourne l'image courrante si on annule
 			askcopy(ImagePath, selectedFile.getPath()+".png");		
 			
-			new File(WorkingImage.getCurrentImagePath()).delete();
+			new File(ImagePath).delete();
 			model.WorkingImage.setCurrentImagePath(null);
 			IOController.openImage(new File(selectedFile.getPath()+".png"));
 		 	return selectedFile.getPath();
