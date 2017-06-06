@@ -49,7 +49,7 @@ public class IOFile {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Save As..");
 			fileChooser.setInitialFileName(nom[0]);
-			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent()));											 //permet d'ouvrir directement dans le dossier de l'image source
+			fileChooser.setInitialDirectory(new File(new File(ImagePath).getParent()));	//permet d'ouvrir directement dans le dossier de l'image source
 			File selectedFile = fileChooser.showSaveDialog(null);																	//fenetre de sélection 
 			if(selectedFile==null)
 				return model.WorkingImage.getCurrentImagePath()!=null?model.WorkingImage.getCurrentImagePath():model.WorkingImage.getBaseImagePath();				// retourne l'image courrante si on annule

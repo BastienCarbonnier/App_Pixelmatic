@@ -105,12 +105,9 @@ public class InterfaceView {
 		primaryStage.show();
 		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	    	public void handle(WindowEvent e) {
-	    		try {
-					IOController.saveExit();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+	    		e.consume();
+	    		IOController.exit();
+
 	    	}
 		});
 	}

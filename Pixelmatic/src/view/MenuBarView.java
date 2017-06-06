@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Circle;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import model.IOFile;
 
 public class MenuBarView {
@@ -53,6 +54,7 @@ public class MenuBarView {
 	    openMenuItem.setOnAction(actionEvent -> {	    
 	    	
 		    	FileChooser fileChooser = new FileChooser(); 
+				fileChooser.setSelectedExtensionFilter(new ExtensionFilter( "*.png", "*.jpg"));
 		        File file = fileChooser.showOpenDialog(null); 
 		        IOController.openImage(file);
 			
